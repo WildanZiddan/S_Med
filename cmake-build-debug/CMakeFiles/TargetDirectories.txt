@@ -1,0 +1,3 @@
+D:/ASTRATech/Semester 1/PRG1/S-Med/cmake-build-debug/CMakeFiles/S_Med.dir
+D:/ASTRATech/Semester 1/PRG1/S-Med/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/ASTRATech/Semester 1/PRG1/S-Med/cmake-build-debug/CMakeFiles/rebuild_cache.dir
