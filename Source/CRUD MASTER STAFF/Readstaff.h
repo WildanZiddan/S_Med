@@ -3,7 +3,6 @@ void readUpdateDataOwner(){
     y = 13;
     arspstaff = fopen("../Source/../Database/Dat/staff.dat", "rb+");
     while (fread(&k, sizeof(k), 1, arspstaff) == 1 ) {
-        if(strcmp(k.role,"Owner")==0) {
             if (i % 2 == 0) {
                 SetColorBlock(15,4);
                 for(x = y; x <= y;x++){
@@ -14,13 +13,14 @@ void readUpdateDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("MJR",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(64, y);
                 printf("%s\n", k.FName);
                 gotoxy(92, y);
                 printf("%d/%d/%d\n", k.tanggalLahir.hari, k.tanggalLahir.bulan, k.tanggalLahir.tahun);
 
-            } else {
+            }
+            else {
                 SetColorBlock(15, 12);
                 for (x = y; x <= y; x++) {
                     for (j = 36; j < 128; j++) {
@@ -30,7 +30,7 @@ void readUpdateDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("MJR",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(64, y);
                 printf("%s\n", k.FName);
                 gotoxy(92, y);
@@ -39,7 +39,6 @@ void readUpdateDataOwner(){
             i++;
             y++;
         }
-    }
     fclose(arspstaff);
 }
 
@@ -148,7 +147,6 @@ void readAkunDataOwner(){
     y = 13;
     arspstaff = fopen("../Source/../Database/Dat/staff.dat", "rb+");
     while (fread(&k, sizeof(k), 1, arspstaff) == 1 ) {
-        if(strcmp(k.role,"Owner")==0) {
             if (i % 2 == 0) {
                 SetColorBlock(15,4);
                 for(x = y; x <= y;x++){
@@ -159,7 +157,7 @@ void readAkunDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("OWN",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(75, y);
                 printf("%s\n", k.FName);
                 gotoxy(110, y);
@@ -176,7 +174,7 @@ void readAkunDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("OWN",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(75, y);
                 printf("%s\n", k.FName);
                 gotoxy(110, y);
@@ -187,13 +185,13 @@ void readAkunDataOwner(){
             i++;
             y++;
         }
-    }
     fclose(arspstaff);
     SetColorBlock(15,12);
     gotoprinttext(150,40,"K E M B A L I");
     if(getch()){
         BlankDashboard();
-        dataAkun();
+        clearArea(5,19,28,4);
+        menuOpsiDashboardOwner();
     }
 }
 
@@ -311,7 +309,6 @@ void readAllDataOwner(){
     y = 13;
     arspstaff = fopen("../Source/../Database/Dat/staff.dat", "rb+");
     while (fread(&k, sizeof(k), 1, arspstaff) == 1 ) {
-        if(strcmp(k.role,"Owner")==0) {
             if (i % 2 == 0) {
                 SetColorBlock(15,4);
                 for(x = y; x <= y;x++){
@@ -322,7 +319,7 @@ void readAllDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("OWN",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(64, y);
                 printf("%s\n", k.FName);
                 gotoxy(91, y);
@@ -330,7 +327,7 @@ void readAllDataOwner(){
                 gotoxy(38, y);
                 printf("%d", i);
                 gotoxy(47, y);
-                generateid("MJR",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(64, y);
                 printf("%s\n", k.FName);
                 gotoxy(91, y);
@@ -338,7 +335,6 @@ void readAllDataOwner(){
             }
             i++;
             y++;
-        }
     }
     fclose(arspstaff);
     tampilanTableOwner();
@@ -481,7 +477,7 @@ void readAllDataOwner(){
 void menuReadDataModifikasiOwner(){
     SetColorBlock(4,15);
     //   DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
-    //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
     SetColorBlock(15,4);

@@ -124,7 +124,7 @@ void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *outpu
             break;
         } else if (ch == UP_KEY) {
             if (count > 1) {
-                Beep(700, 120);
+                Beep(700, 50);
 //                clearArea(x, y, lebar + 2, tinggi);
                 y -= 3;  // Geser ke atas sebanyak 4 unit
                 SetColorBlock(15,12);
@@ -150,7 +150,7 @@ void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *outpu
             }
         } else if (ch == DWN_KEY) {
             if (count < 5) {
-                Beep(700, 120);
+                Beep(700, 50);
 //                clearArea(x, y, lebar + 2, tinggi);
                 y += 3;  // Geser ke bawah sebanyak 4 unit
 //                BorderSwitchRole(x, y, lebar);
@@ -355,7 +355,7 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
     // menuDataKaryawanManajer2();
     if(count == 1){
         SetColorBlock(0,12);
-        gotoprinttext(78,25,"D A T A  M A N A J E R");
+        gotoprinttext(78,25,"D A T A  O W N E R");
     }
     while (1) {
         ch = getch();
@@ -384,7 +384,7 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
             break;
         } else if (ch == UP_KEY) {
             if (count > 1) {
-                Beep(1000, 100);
+                Beep(1000, 50);
 //                clearArea(x, y, lebar + 2, tinggi);
                 y -= 3;  // Geser ke atas sebanyak 4 unit
                 SetColorBlock(15,12);
@@ -394,7 +394,7 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(78,25,"D A T A  M A N A J E R");
+                gotoprinttext(78,25,"D A T A  O W N E R");
             } else if(count == 2){
                 SetColorBlock(0,12);
                 gotoprinttext(80,28,"D A T A  A D M I N");
@@ -407,7 +407,7 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
             }
         } else if (ch == DWN_KEY) {
             if (count < 4) {
-                Beep(1000, 100);
+                Beep(1000, 50);
 //                clearArea(x, y, lebar + 2, tinggi);
                 y += 3;  // Geser ke bawah sebanyak 4 unit
 //                BorderSwitchRole(x, y, lebar);
@@ -666,7 +666,7 @@ void SpecialKeyCariDataLaporan(int x, int y, int lebar,int tinggi,int *output) {
             break;
         } else if (ch == RGHT_KEY) {
             if (count > 1) {
-                Beep(1000, 100);
+                Beep(1000, 50);
                 clearArea(x, y, lebar+2,tinggi);
                 x += 17;
                 BorderSwitchRole(x, y, lebar);
@@ -675,7 +675,7 @@ void SpecialKeyCariDataLaporan(int x, int y, int lebar,int tinggi,int *output) {
             }
         } else if (ch == LEFT_KEY) {
             if (count < 2) {
-                Beep(1000, 100);
+                Beep(1000, 50);
                 clearArea(x, y, lebar+2, tinggi);
                 x -= 17;
                 BorderSwitchRole(x,y,lebar);

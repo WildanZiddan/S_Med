@@ -3,8 +3,8 @@ void inputStaff(int output);
 
 void createData(int output){
     SetColorBlock(4,15);
-    DrawFile(50,9,"../Source/../Desaintxt/Dashboard/tambahData.txt");
-    DrawFile(130,21,"../Source/../Desaintxt/elemen/pensil.txt");
+    //DrawFile(50,9,"../Source/../Desaintxt/Dashboard/tambahData.txt");
+    //DrawFile(130,21,"../Source/../Desaintxt/elemen/pensil.txt");
     showCursor();
     gotoxy(135,16);
     printf("Ketik 0 lalu enter untuk Batal");
@@ -65,16 +65,24 @@ void createData(int output){
         gotoxy(75, 23);
         getnum(&tempk.tanggalLahir.tahun, 4);
         hideCursor();
-        if (tempk.tanggalLahir.tahun < 1900 || tempk.tanggalLahir.tahun > 2015) {
-            MessageBox(NULL, "Jangka Inputan tahun 1900 - 2015", "NOTIFICATION!",
+        if (tempk.tanggalLahir.tahun < 1900 || tempk.tanggalLahir.tahun > 2008) {
+            MessageBox(NULL, "Jangka Inputan tahun 1900 - 2008", "NOTIFICATION!",
                        MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
             clearArea(75, 23, 4, 1);
         }
-    }while(tempk.tanggalLahir.tahun < 1900 || tempk.tanggalLahir.tahun > 2015);
+    }while(tempk.tanggalLahir.tahun < 1900 || tempk.tanggalLahir.tahun > 2008);
     if (tempk.tanggalLahir.hari == 0 || tempk.tanggalLahir.bulan == 0 || tempk.tanggalLahir.tahun == 0) {
         BlankDashboard();
         menuCreateDataModifikasiOwner();
     }
+    fflush(stdin);
+    showCursor();
+    gotoxy(40, 25);
+    printf("R O L E                   :");
+    gotoxy(69, 25);
+    getinput(tempk.role,25,2);
+    hideCursor();
+    cancelCharOwner(tempk.role);
 
     inputUsernamedanPass();
 
@@ -87,19 +95,7 @@ void createData(int output){
     k.tanggalLahir.bulan = tempk.tanggalLahir.bulan;
     k.tanggalLahir.tahun = tempk.tanggalLahir.tahun;
     strcpy(k.username,tempk.username);
-
-
-    switch (output) {
-            case 1 :
-                strcpy(k.role, "Owner");
-                break;
-            case 2:
-                strcpy(k.role, "Kasir");
-                break;
-            case 3:
-                strcpy(k.role, "Apoteker");
-                break;
-        }
+    strcpy(k.role,tempk.role);
 
         gotoxy(83,36);printf("Data ini ingin anda simpan ?");
         SpecialKeyYesorNoDashboard(100, 38,10,4,15,&output);
@@ -117,84 +113,32 @@ void createData(int output){
 
 void inputStaff(int output) {
     /*Create Data Manajer*/
-    if (output == 1) {
-        arspstaff = fopen("../Source/../Database/Dat/staff.dat", "ab+");
+        fp = fopen("../Source/../Database/Dat/staff.dat", "ab+");
         i = 0;
-        fread(&k, sizeof(k), 1, arspstaff);
-        while (!feof(arspstaff)) {
-            fread(&k, sizeof(k), 1, arspstaff);
-            id = k.idStaff.id_owner;
+        fread(&k, sizeof(k), 1, fp);
+        while (!feof(fp)) {
+            fread(&k, sizeof(k), 1, fp);
+            id = k.idStaff;
             i++;
         }
 
         if (i == 0) {
-            k.idStaff.id_owner = 1;
+            k.idStaff = 1;
         } else {
-            k.idStaff.id_owner= id + 1;
+            k.idStaff= id + 1;
         }
 
-        tempk.idStaff.id_owner = k.idStaff.id_owner;
+        tempk.idStaff = k.idStaff;
         fflush(stdin);
         gotoxy(40, 17);
-        printf("I D   M A N A G E R       :");
+        printf("I D   S T A F F       :");
         gotoxy(69, 17);
-        generateid("OWN", tempk.idStaff.id_owner);
+        generateid("STF", tempk.idStaff);
         hideCursor();
-        fclose(arspstaff);
-//    Create Data Admin
-    } else if (output == 2) {
-        arspstaff = fopen("../Source/../Database/Dat/staff.dat", "ab+");
-        i = 0;
-        fread(&k, sizeof(k), 1, arspstaff);
-        while (!feof(arspstaff)) {
-            fread(&k, sizeof(k), 1, arspstaff);
-            id = k.idStaff.id_kasir;
-            i++;
-        }
+        fclose(fp);
+}
 
-        if (i == 0) {
-            k.idStaff.id_kasir = 1;
-        } else {
-            k.idStaff.id_kasir = id + 1;
-        }
-
-        tempk.idStaff.id_kasir = k.idStaff.id_kasir;
-        gotoxy(40, 17);
-        printf("I D   A D M I N           :");
-        gotoxy(69, 17);
-        generateid("ADM", tempk.idStaff.id_kasir);
-        hideCursor();
-        fclose(arspstaff);
-    }
-    /*Create Data Kasir*/
-    else if (output == 3) {
-        arspstaff = fopen("../Source/../Database/Dat/staff.dat", "ab+");
-        i = 0;
-        fread(&k, sizeof(k), 1, arspstaff);
-        while (!feof(arspstaff)) {
-            fread(&k, sizeof(k), 1, arspstaff);
-            id = k.idStaff.id_apoteker;
-            i++;
-        }
-
-        if (i == 0) {
-            k.idStaff.id_apoteker = 1;
-        } else {
-            k.idStaff.id_apoteker = id + 1;
-        }
-
-        tempk.idStaff.id_apoteker = k.idStaff.id_apoteker;
-        fflush(stdin);
-        gotoxy(40, 17);
-        printf("I D  K A S I R            :");
-        gotoxy(69, 17);
-        generateid("APT",tempk.idStaff.id_apoteker);
-        hideCursor();
-        fclose(arspstaff);
-        }
-    }
-
-void    inputUsernamedanPass() {
+void inputUsernamedanPass() {
     do {
         fflush(stdin);
         showCursor();
@@ -235,7 +179,7 @@ void menuCreateDataModifikasiOwner(){
     char exit[2] = "y";
     SetColorBlock(4,15);
     //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/tambahData.txt");
-    //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
     SetColorBlock(15,4);
@@ -244,7 +188,6 @@ void menuCreateDataModifikasiOwner(){
     frameLayout(119,18,120,38,220);
     frameLayout(60,37,120,38,223);
     SetColorBlock(15,12);
-    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
     switch (output) {
         case 1:
             BlankDashboard();
@@ -264,7 +207,8 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                menuCreateDataModifikasiOwner();
+                clearArea(5,19,28,4);
+                menuOpsiDashboardOwner();
             }
             break;
         case 2:
@@ -287,7 +231,8 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                menuCreateDataModifikasiOwner();
+                clearArea(5,19,28,4);
+                menuOpsiDashboardOwner();
             }
             break;
         case 3:
@@ -310,13 +255,14 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                menuCreateDataModifikasiOwner();
+                clearArea(5,19,28,4);
+                menuOpsiDashboardOwner();
             }
             break;
         case 4:
             hideCursor();
             BlankDashboard();
-            dataStaffMenu();
+            dataAkun();
             break;
     }
 }

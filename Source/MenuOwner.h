@@ -3,6 +3,7 @@ void menuCreateDataModifikasiOwner();
 void menuUpdateDataModifikasiOwner();
 void menuDeleteDataModifikasiOwner();
 void readAkunDataOwner();
+void readAllDataOwner();
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
@@ -43,7 +44,7 @@ void profileOwner(){
     if(found){
         clearArea(74,21,58,12);
         gotoxy(74,21);
-        generateid("OWN",k.idStaff.id_owner);
+        generateid("OWN",k.idStaff);
         gotoprinttext(74,23,k.FName);
         gotoprinttext(74,25,k.No_telp);
         gotoxy(74,27);
@@ -57,7 +58,7 @@ void profileOwner(){
 void dataStaffMenu(){
     SetColorBlock(4,15);
 //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
-//    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,40,32);
     SetColorBlock(15,4);
@@ -78,15 +79,16 @@ void dataStaffMenu(){
         break;
         case 3 :
             BlankDashboard();
-        menuUpdateDataModifikasiOwner();
+            menuUpdateDataModifikasiOwner();
         break;
         case 4 :
             BlankDashboard();
-        menuDeleteDataModifikasiOwner();
+            menuDeleteDataModifikasiOwner();
         break;
         case 5 :
             BlankDashboard();
-        menuOpsiDashboardOwner();
+            clearArea(5,14,28,4);
+            menuOpsiDashboardOwner();
         break;
     }
 }
@@ -94,7 +96,7 @@ void dataStaffMenu(){
 void dataAkun(){
     SetColorBlock(4,15);
 //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
-//    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
     SetColorBlock(15,4);
@@ -103,29 +105,34 @@ void dataAkun(){
     frameLayout(119,18,120,38,220);
     frameLayout(60,37,120,38,223);
     SetColorBlock(15,12);
-    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
-    switch (output) {
-        case 1 :
-            BlankDashboard();
-            tampilanTableAkunOwner();
-            readAkunDataOwner();
-        break;
-        // case 2 :
-        //     BlankDashboard();
-        // tampilanTableAkunAdmin();
-        // readAkunDataAdmin();
-        // break;
-        // case 3 :
-        //     BlankDashboard();
-        // tampilanTableAkunKasir();
-        // readAkunDataKasir();
-        // break;
-        case 4 :
-            BlankDashboard();
-        clearArea(5,19,28,4);
-        menuOpsiDashboardOwner();
-        break;
-    }
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableAkunOwner();
+    readAkunDataOwner();
+
+    // switch (output) {
+    //     case 1 :
+    //         BlankDashboard();
+    //         tampilanTableAkunOwner();
+    //         readAkunDataOwner();
+    //     break;
+    //     // case 2 :
+    //     //     BlankDashboard();
+    //     // tampilanTableAkunAdmin();
+    //     // readAkunDataAdmin();
+    //     // break;
+    //     // case 3 :
+    //     //     BlankDashboard();
+    //     // tampilanTableAkunKasir();
+    //     // readAkunDataKasir();
+    //     // break;
+    //     case 4 :
+    //         BlankDashboard();
+    //         clearArea(5,19,28,4);
+    //         menuOpsiDashboardOwner();
+    //     break;
+    // }
 }
 
 void menuOpsiDashboardOwner(){
@@ -135,12 +142,11 @@ void menuOpsiDashboardOwner(){
         case 1 :
             BlankDashboard();
             profileOwner();
-            menuOpsiDashboardOwner();
+
             break;
         case 2 :
             BlankDashboard();
             dataStaffMenu();
-            menuOpsiDashboardOwner();
         break;
         // case 3 :
         //     BlankDashboard();

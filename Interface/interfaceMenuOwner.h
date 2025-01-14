@@ -15,7 +15,7 @@ void menuDashboardOwner(){
 
 /*---------------------------------Menu Pilihan CRUD----------------------------*/
 void menuDataSupplierOwner(){
-    DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
     gotoprinttext(80,25," L I H A T  D A T A");
     gotoprinttext(80,28,"T A M B A H  D A T A");
     gotoprinttext(80,31,"U P D A T E  D A T A");
@@ -38,7 +38,7 @@ void menuUpdateDataOwner(){
     gotoprinttext(138,25,"     K E M B A L I ");
 }
 
-/*------------------------------------Detail Update Data Manajer-------------------------------------*/
+/*------------------------------------Detail Update Data Owner-------------------------------------*/
 void seluruhDataOwner(){
     SetColorBlock(15,12);
     gotoprinttext(70,12,"D E T A I L  D A T A");
@@ -118,7 +118,7 @@ void tampilanTableOwner(){
         }
     }
     gotoprinttext(38,11,"NO.");
-    gotoprinttext(42,11,"I D  M A N A J E R");
+    gotoprinttext(42,11,"I D  O W N E R");
     gotoprinttext(64,11,"N A M A  L E N G K A P");
     gotoprinttext(90,11,"T G L  L A H I R");
     gotoprinttext(113,11,"N O  T E L E P O N E");
@@ -136,8 +136,8 @@ void seluruhDataSupplier(){
 
 void frameCRUD(int x, int y,char namafile[255]){
     SetColorBlock(4,15);
-    DrawFile(x,y,namafile);
-    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    //DrawFile(x,y,namafile);
+    //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,40,32);
     SetColorBlock(15,4);
@@ -186,7 +186,7 @@ void tampilanCRUDStaff(){
     }
 
     gotoprinttext(38,11,"NO.");
-    gotoprinttext(42,11,"I D  M A N A J E R");
+    gotoprinttext(42,11,"I D  O W N E R");
     gotoprinttext(64,11,"N A M A  L E N G K A P");
     gotoprinttext(90,11,"T G L  L A H I R");
 }

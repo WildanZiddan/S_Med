@@ -21,7 +21,7 @@ void deleteKaryawanOwner(){
             ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
             found = 0;
             while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-                if (k.idStaff.id_owner == id && strcmp(k.role,"Owner")==0) {
+                if (k.idStaff == id && strcmp(k.role,"Owner")==0) {
                     found = 1;
                 }else {
                     fwrite(&k, sizeof(k), 1, ft);
@@ -34,7 +34,7 @@ void deleteKaryawanOwner(){
                 DashboardDetail(55,102,10,31,103,56,32,11);
                 seluruhDataOwner();
                 gotoxy(72,14);
-                generateid("OWN",k.idStaff.id_owner);
+                generateid("STF",k.idStaff);
                 gotoxy(72,16);printf("%s",k.FName);
                 gotoxy(72,18);printf("%s",k.No_telp);
                 gotoxy(72,20);printf("%d/%d/%d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);
@@ -233,8 +233,8 @@ void deleteKaryawanOwner(){
 void menuDeleteDataModifikasiOwner(){
     char exit[2] = "y";
     SetColorBlock(1,7);
-    DrawFile(48,9,"../Source/../Desaintxt/Dashboard/dataStaff.txt");
-    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
+    //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/dataStaff.txt");
+    //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
     SetColorBlock(9,9);
     frameLayout(60,18,120,38,32);
     SetColorBlock(7,1);

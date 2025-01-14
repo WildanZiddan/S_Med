@@ -298,7 +298,7 @@ void login() {
         }
         fclose(arspstaff);
         if (strcmp(inputUsername, username[0]) == 0 && strcmp(inputPassword, password[0]) == 0 &&strcmp(role[0], "Owner") == 0) {
-            MessageBox(NULL, "Selamat Datang Owner", "Login Berhasil", MB_OK | MB_ICONINFORMATION);
+            MessageBox(NULL, "Selamat Datang Owner", "Login Berhasil", MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
             blankScreen();
             // char *audioFile = "../Sound/Selamatdatangmanajer.wav";
             // playCustomSound(audioFile);

@@ -4,7 +4,7 @@ void updateDataOwner(){
     SetColorBlock(15,12);
     showCursor();
     gotoprinttext(140,22,"U P D A T E  D A T A");
-    gotoxy(132,24);printf("Masukan ID Karyawan: OWN");
+    gotoxy(132,24);printf("Masukan ID Karyawan: STF");
     gotoxy(156,24);
     getnum(&id,3);
     hideCursor();
@@ -15,7 +15,7 @@ void updateDataOwner(){
         ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
         found = 0;
         while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-            if (k.idStaff.id_owner == id && strcmp(k.role,"Owner")==0) {
+            if (k.idStaff == id && strcmp(k.role,"Owner")==0) {
                 MessageBox(NULL,"ID Owner Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
                 found = 1;
             }else{
@@ -28,7 +28,7 @@ void updateDataOwner(){
             DashboardDetail(55,102,10,31,103,56,32,11);
             seluruhDataOwner();
             gotoxy(72,14);
-            generateid("OWN",k.idStaff.id_owner);
+            generateid("OWN",k.idStaff);
             gotoxy(72,16);printf("%s",k.FName);
             gotoxy(72,18);printf("%s",k.No_telp);
             gotoxy(72,20);printf("%02d/%02d/%04d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);

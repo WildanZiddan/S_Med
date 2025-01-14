@@ -81,22 +81,22 @@ struct time {
 
 
 /* ==================== STRUCT ID STAFF ==================== */
-struct id {
-    int id_owner;
-    int id_kasir;
-    int id_apoteker;
-};
-typedef struct akun{
-    char username[255];
-};
-struct akun ak;
-FILE *akun;
+// struct id {
+//     int id_owner;
+//     int id_kasir;
+//     int id_apoteker;
+// };
+// typedef struct akun{
+//     char username[255];
+// };
+// struct akun ak;
+// FILE *akun;
 /* ============================================================ */
 
 
 /* ==================== TABLE MASTER STAFF ==================== */
 typedef struct staff{
-    struct id idStaff;
+    int idStaff;
     char FName[100];
     char No_telp[13];
     struct date tanggalLahir;
