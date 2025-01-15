@@ -1,18 +1,18 @@
-void deleteKaryawanOwner(){
-    SetColorBlock(7,9);
+void deleteStaffOwner(){
+    SetColorBlock(15,12);
     gotoxy(136,38);
     printf("Ketik 0 untuk batal delete");
     gotoxy(140,22);
     showCursor();
     printf("D E L E T E  D A T A");
     gotoxy(132,24);
-    printf("Masukkan ID STAFF: OWN");
+    printf("Masukkan ID STAFF: STF");
     gotoxy(157,24);
     getnum(&id,3);
     hideCursor();
     if(id == 0){
         BlankDashboard();
-        menuDeleteDataModifikasiOwner();
+        menuOpsiDashboardOwner();
     }
     SpecialKeyUpdate(152,26,13,3,&output);
     switch (output) {
@@ -21,7 +21,7 @@ void deleteKaryawanOwner(){
             ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
             found = 0;
             while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-                if (k.idStaff == id && strcmp(k.role,"Owner")==0) {
+                if (k.idStaff == id && strcmp(k.role,"Owner")==0 || strcmp(k.role,"Kasir")==0 || strcmp(k.role,"Apoteker")==0) {
                     found = 1;
                 }else {
                     fwrite(&k, sizeof(k), 1, ft);
@@ -61,14 +61,14 @@ void deleteKaryawanOwner(){
                     menuDeleteDataModifikasiOwner();
                 }
             }else{
-                MessageBox(NULL,"ID Karyawan Tidak ditemukan!","Delete Gagal!",MB_OK|MB_ICONERROR|MB_DEFAULT_DESKTOP_ONLY);
+                MessageBox(NULL,"ID Staff Tidak ditemukan!","Delete Gagal!",MB_OK|MB_ICONERROR|MB_DEFAULT_DESKTOP_ONLY);
                 clearKanan();
-                deleteKaryawanOwner();
+                deleteStaffOwner();
             }
             break;
         case 2:
             BlankDashboard();
-            menuDeleteDataModifikasiOwner();
+            menuOpsiDashboardOwner();
             break;
     }
 }
@@ -232,17 +232,17 @@ void deleteKaryawanOwner(){
 
 void menuDeleteDataModifikasiOwner(){
     char exit[2] = "y";
-    SetColorBlock(1,7);
+    SetColorBlock(4,15);
     //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/dataStaff.txt");
     //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
-    SetColorBlock(9,9);
+    SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
-    SetColorBlock(7,1);
+    SetColorBlock(15,4);
     frameLayout(60,18,120,19,220);
     frameLayout(60,18,61,38,220);
     frameLayout(119,18,120,38,220);
     frameLayout(60,37,120,38,223);
-    SetColorBlock(7,9);
+    SetColorBlock(15,12);
     SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
     switch (output) {
         case 1:
@@ -252,7 +252,7 @@ void menuDeleteDataModifikasiOwner(){
             DashboardCRUD();
             readUpdateDataOwner();
             do {
-                deleteKaryawanOwner();
+                deleteStaffOwner();
                 clearTengah();
                 tampilanCRUDStaff();
                 readUpdateDataOwner();

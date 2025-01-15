@@ -87,7 +87,6 @@ void dataStaffMenu(){
         break;
         case 5 :
             BlankDashboard();
-            clearArea(5,14,28,4);
             menuOpsiDashboardOwner();
         break;
     }
@@ -142,7 +141,6 @@ void menuOpsiDashboardOwner(){
         case 1 :
             BlankDashboard();
             profileOwner();
-
             break;
         case 2 :
             BlankDashboard();

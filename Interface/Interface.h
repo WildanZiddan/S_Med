@@ -598,6 +598,30 @@ void inputPass(char password[]) {
     }
     password[i] = '\0';  // Menambahkan null-terminating character ke akhir string
 }
+void inputUser(char username[]) {
+    fflush(stdin);
+    i = 0;
+    char ch;
+    while (1) {
+        ch = _getch();  // Mengambil karakter tanpa menampilkannya
+        if (ch == 8) {
+            if (i > 0) {
+                // Hapus karakter sebelumnya dan mundur satu langkah
+                printf("\b \b");
+                i--;
+            }
+        } else if (ch == 13) {
+            // 13 adalah nilai ASCII untuk Enter
+            break;
+        } else {
+            // Menambahkan karakter ke dalam password dan menampilkan tanda bintang
+            username[i] = ch;
+
+            i++;
+        }
+    }
+    username[i] = '\0';  // Menambahkan null-terminating character ke akhir string
+}
 
 void BorderSwitchCategori(int x, int y, int lebar){
     gotoprintchar(x,y,201);
@@ -828,7 +852,7 @@ void Dashboard(){
 }
 
 void DashboardCRUD(){
-    SetColorBlock(9,9);
+    SetColorBlock(12,12);
     frameLayout(130,9,170,42,32);
     SetColorBlock(1,15);
     frameLayout(130,9,131,42,223);

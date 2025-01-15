@@ -1,7 +1,7 @@
 /*-------------------------Menu Navigasi Bar--------------------------------------*/
 void menuDashboardOwner(){
     gotoprinttext(12,10,"P R O F I L E");
-    gotoprinttext(12,11,"M A N A J E R");
+    gotoprinttext(14,11,"O W N E R");
     gotoprinttext(15,15,"D A T A");
     gotoprinttext(14,16,"S T A F F");
     gotoprinttext(15,20,"D A T A");
@@ -32,8 +32,8 @@ void menuUpdateDataSupplier(){
 
 /*------------------------------------Menu Update Data-------------------------------------*/
 void menuUpdateDataOwner(){
-    gotoprinttext(135,19,"U B A H  N O  T E L E P O N E");
-    gotoprinttext(142,21,"U B A H  G A J I");
+    gotoprinttext(137,19,"U B A H  N O  T E L E P O N");
+    gotoprinttext(138,21,"U B A H  U S E R N A M E");
     gotoprinttext(138,23,"U B A H  P A S S W O R D");
     gotoprinttext(138,25,"     K E M B A L I ");
 }

@@ -443,7 +443,7 @@ void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
     menuUpdateDataOwner();
     if(count == 1){
         SetColorBlock(0,12);
-        gotoprinttext(135,19,"U B A H  N O  T E L E P O N E");
+        gotoprinttext(137,19,"U B A H  N O  T E L E P O N");
     }
     while (1) {
         ch = getch();
@@ -482,10 +482,10 @@ void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(135,19,"U B A H  N O  T E L E P O N E");
+                gotoprinttext(137,19,"U B A H  N O  T E L E P O N");
             } else if(count == 2){
                 SetColorBlock(0,12);
-                gotoprinttext(142,21,"U B A H  G A J I");
+                gotoprinttext(138,21,"U B A H  U S E R N A M E");
             } else if(count ==3){
                 SetColorBlock(0,12);
                 gotoprinttext(138,23,"U B A H  P A S S W O R D");
@@ -505,10 +505,10 @@ void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(135,19,"U B A H  N O  T E L E P O N E");
+                gotoprinttext(137,19,"U B A H  N O  T E L E P O N");
             } else if(count == 2){
                 SetColorBlock(0,12);
-                gotoprinttext(142,21,"U B A H  G A J I");
+                gotoprinttext(138,21,"U B A H  U S E R N A M E");
             } else if(count ==3){
                 SetColorBlock(0,12);
                 gotoprinttext(138,23,"U B A H  P A S S W O R D");

@@ -4,7 +4,7 @@ void updateDataOwner(){
     SetColorBlock(15,12);
     showCursor();
     gotoprinttext(140,22,"U P D A T E  D A T A");
-    gotoxy(132,24);printf("Masukan ID Karyawan: STF");
+    gotoxy(132,24);printf("Masukan ID Staff: STF");
     gotoxy(156,24);
     getnum(&id,3);
     hideCursor();
@@ -15,8 +15,8 @@ void updateDataOwner(){
         ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
         found = 0;
         while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-            if (k.idStaff == id && strcmp(k.role,"Owner")==0) {
-                MessageBox(NULL,"ID Owner Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+            if (k.idStaff == id && strcmp(k.role,"Owner")==0 || strcmp(k.role,"Kasir")==0 || strcmp(k.role,"Apoteker")==0) {
+                MessageBox(NULL,"ID Staff Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
                 found = 1;
             }else{
                 fwrite(&k, sizeof(k), 1, ft);
@@ -34,9 +34,10 @@ void updateDataOwner(){
             gotoxy(72,20);printf("%02d/%02d/%04d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);
             gotoxy(72,22);printf("%s",k.username);
             gotoxy(72,24);printf("%s",k.password);
+            gotoxy(72,26);printf("%s",k.role);
             //Menu update data
                 clearKanan();
-                SetColorBlock(7, 9);
+                SetColorBlock(15, 12);
                 gotoprinttext(140, 12, "U P D A T E  D A T A");
                 menuUpdateDataOwner();
                 SpecialkeyDashboardMenuUpdateDataOwner(&output);
@@ -45,8 +46,8 @@ void updateDataOwner(){
                         clearKanan();
                         showCursor();
                         gotoxy(132, 24);
-                        SetColorBlock(7,9);
-                        printf("Masukan No. Telepone:");
+                        SetColorBlock(15,12);
+                        printf("Masukan No. Telepon:");
                         gotoxy(154, 24);
                         getinput(k.No_telp,14,3);
                         hideCursor();
@@ -81,52 +82,32 @@ void updateDataOwner(){
                     //     remove("../Source/../Database/Dat/karyawan.dat");
                     //     rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/karyawan.dat");
                     //     break;
-//                    case 3:
-//                        clearKanan();
-//                        do{
-//                            showCursor();
-//                            gotoxy(132, 24);
-//                            SetColorBlock(7,9);
-//                            printf("U S E R N A M E :");
-//                            gotoxy(150, 24);
-//                            getinput(tempk.username,18,1);
-//                            hideCursor();
-//                            found = 4;
-//                            fp = fopen("../Source/../Database/Dat/karyawan.dat","rb");
-//                            while(found == 4 && fread(&k,sizeof (k),1,fp)==1){
-//                                if(strcmp(k.username,tempk.username)==0) {
-//                                    found = 1;
-//                                    MessageBox(NULL, "Username Sudah Ada!", "Duplikasi Username",
-//                                               MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
-//                                    for (i = 150; i < 169; i++) {
-//                                        gotoprintchar(i, 24, 32);
-//                                    }
-//                                } else {
-//                                    found = 4;
-//                                }
-//                            }
-//                        }while (found == 1);
-//                        if(found == 4){
-//                            strcpy(k.username,tempk.username);
-//                        }
-//                        fclose(fp);
-//                        hideCursor();
-//                        arspkaryawan = fopen("../Source/../Database/Dat/karyawan.dat", "rb");
-//                        MessageBox(NULL, "Username Berhasil Diubah", "NOTIFICATION!",MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
-//                        fwrite(&k, sizeof(k), 1, ft);
-//                        while (fread(&k, sizeof(k), 1, arspkaryawan) == 1) {
-//                            fwrite(&k, sizeof(k), 1, ft);
-//                        }
-//                        fclose(arspkaryawan);
-//                        fclose(ft);
-//                        remove("../Source/../Database/Dat/karyawan.dat");
-//                        rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/karyawan.dat");
-//                        break;
+                    case 2:
+                        clearKanan();
+                    showCursor();
+                    gotoxy(132, 24);
+                    SetColorBlock(15,12);
+                    printf("Masukan Username:");
+                    gotoxy(150, 24);
+                    getinput(k.username, 14, 2);
+                    hideCursor();
+                    MessageBox(NULL, "Username Berhasil Diubah", "NOTIFICATION!",
+                               MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
+                    fwrite(&k, sizeof(k), 1, ft);
+                    while (fread(&k, sizeof(k), 1, arspstaff) == 1) {
+                        fwrite(&k, sizeof(k), 1, ft);
+                    }
+                    fclose(arspstaff);
+                    fclose(ft);
+                    remove("../Source/../Database/Dat/staff.dat");
+                    rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/staff.dat");
+                    break;
+
                     case 3:
                         clearKanan();
                         showCursor();
                         gotoxy(132, 24);
-                        SetColorBlock(7,9);
+                        SetColorBlock(15,12);
                         printf("Masukan Password:");
                         gotoxy(150, 24);
                         inputPass(k.password);
@@ -150,8 +131,8 @@ void updateDataOwner(){
                         break;
                 }
         } else {
-            MessageBox(NULL,"ID Karyawan Tidak Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
-            SetColorBlock(9,9);
+            MessageBox(NULL,"ID Staff Tidak Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+            SetColorBlock(12,12);
             for(i = 154; i < 169; i++){
                 gotoprintchar(i,24,32);
             }
@@ -498,21 +479,32 @@ void updateDataOwner(){
 
 void menuUpdateDataModifikasiOwner(){
     char exit[2] = "y";
-    SetColorBlock(1,7);
-    DrawFile(48,9,"../Source/../Desaintxt/Dashboard/updatedata.txt");
+    SetColorBlock(4,15);
+    //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/updatedata.txt");
     DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
-    SetColorBlock(9,9);
+    SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
-    SetColorBlock(7,1);
-    frameLayout(60,18,120,19,220);
-    frameLayout(60,18,61,38,220);
-    frameLayout(119,18,120,38,220);
-    frameLayout(60,37,120,38,223);
-    SetColorBlock(7,9);
-    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
-    switch (output) {
-        case 1:
-            do {
+    SetColorBlock(15,12);
+    BlankDashboard();
+    tampilanCRUDStaff();
+    DashboardCRUD();
+    readUpdateDataOwner();
+    updateDataOwner();
+    clearTengah();
+    tampilanCRUDStaff();
+    readUpdateDataOwner();
+    clearKanan();
+    SetColorBlock(15,12);
+    gotoxy(135,23);printf("Anda Ingin Mengupdate Data Lagi?");
+    SpecialKeyYesorNoDashboard(153, 25,10,15,12,&output);
+    clearKanan();
+    SetColorBlock(15,12);
+    gotoprinttext(114,40,"K E M B A L I");
+    if(getch()){
+        BlankDashboard();
+        menuUpdateDataModifikasiOwner();
+    }
+
                 BlankDashboard();
                 tampilanCRUDStaff();
                 DashboardCRUD();
@@ -525,7 +517,7 @@ void menuUpdateDataModifikasiOwner(){
                 SetColorBlock(7,9);
                 gotoxy(135,23);printf("Anda Ingin Mengupdate Data Lagi?");
                 SpecialKeyYesorNoDashboard(153, 25,10,7,9,&output);
-            }while(output == 1);
+
             clearKanan();
             SetColorBlock(7,9);
             gotoprinttext(114,40,"K E M B A L I");
@@ -533,7 +525,7 @@ void menuUpdateDataModifikasiOwner(){
                 BlankDashboard();
                 menuUpdateDataModifikasiOwner();
             }
-            break;
+
         // case 2:
         //     do {
         //         hideCursor();
@@ -583,12 +575,12 @@ void menuUpdateDataModifikasiOwner(){
         //         menuUpdateDataModifikasiOwner();
         //     }
         //break;
-        case 4:
-            hideCursor();
-            BlankDashboard();
-            dataStaffMenu();
-            break;
-    }
+    //     case 4:
+    //         hideCursor();
+    //         BlankDashboard();
+    //         dataStaffMenu();
+    //         break;
+    // }
 }
 
 // void updateDataManajerAdmin(){
