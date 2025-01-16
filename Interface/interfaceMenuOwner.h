@@ -48,6 +48,7 @@ void seluruhDataOwner(){
     gotoprinttext(57,20,"TANGGAL LAHIR :");
     gotoprinttext(57,22,"USERNAME      :");
     gotoprinttext(57,24,"PASSWORD      :");
+    gotoprinttext(57,26,"ROLE :");
 }
 
 /*------------------------------------Detail Update Data Admin-------------------------------------*/

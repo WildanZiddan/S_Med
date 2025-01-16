@@ -23,7 +23,7 @@ void createData(int output){
     fflush(stdin);
     showCursor();
     gotoxy(40, 21);
-    printf("N O.  T E L E P O N E     :");
+    printf("N O.  T E L E P O N       :");
     gotoxy(69, 21);
     getallinput(tempk.No_telp,12,13,3);
     hideCursor();
@@ -73,7 +73,7 @@ void createData(int output){
     }while(tempk.tanggalLahir.tahun < 1900 || tempk.tanggalLahir.tahun > 2008);
     if (tempk.tanggalLahir.hari == 0 || tempk.tanggalLahir.bulan == 0 || tempk.tanggalLahir.tahun == 0) {
         BlankDashboard();
-        menuCreateDataModifikasiOwner();
+        dataStaffMenu();
     }
     fflush(stdin);
     showCursor();
@@ -177,17 +177,6 @@ void inputUsernamedanPass() {
 
 void menuCreateDataModifikasiOwner(){
     char exit[2] = "y";
-    SetColorBlock(4,15);
-    //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/tambahData.txt");
-    DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
-    SetColorBlock(12,12);
-    frameLayout(60,18,120,38,32);
-    SetColorBlock(15,4);
-    frameLayout(60,18,120,19,220);
-    frameLayout(60,18,61,38,220);
-    frameLayout(119,18,120,38,220);
-    frameLayout(60,37,120,38,223);
-    SetColorBlock(15,12);
     switch (output) {
         case 1:
             BlankDashboard();
@@ -200,6 +189,7 @@ void menuCreateDataModifikasiOwner(){
                 SpecialKeyYesorNoDashboard(100, 38,10,4,15,&input);
                 if(input==1){
                     BlankDashboard();
+                    menuOpsiDashboardOwner();
                 }
             } while(input == 1);
             hideCursor();
@@ -207,8 +197,7 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                clearArea(5,19,28,4);
-                menuOpsiDashboardOwner();
+                dataStaffMenu();
             }
             break;
         case 2:
@@ -231,8 +220,7 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                clearArea(5,19,28,4);
-                menuOpsiDashboardOwner();
+                dataStaffMenu();
             }
             break;
         case 3:
@@ -244,7 +232,7 @@ void menuCreateDataModifikasiOwner(){
                 gotoxy(80,36);
                 SetColorBlock(4,15);
                 printf("Anda Ingin Menambahkan data [Y/N]");
-                SpecialKeyYesorNoDashboard(100, 38,10,15,4,&input);
+                SpecialKeyYesorNoDashboard(100, 38,10,4,15,&input);
                 hideCursor();
                 if(input==1){
                     BlankDashboard();
@@ -255,14 +243,13 @@ void menuCreateDataModifikasiOwner(){
             gotoprinttext(150,40,"K E M B A L I");
             if(getch()){
                 BlankDashboard();
-                clearArea(5,19,28,4);
-                menuOpsiDashboardOwner();
+                dataStaffMenu();
             }
             break;
         case 4:
             hideCursor();
             BlankDashboard();
-            dataAkun();
+            dataStaffMenu();
             break;
     }
 }

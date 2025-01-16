@@ -120,6 +120,10 @@ void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *outpu
                     Beep(3000, 100);
                     *output = count;
                     break;
+                case 5 :
+                    Beep(3000, 100);
+                *output = count;
+                break;
             }
             break;
         } else if (ch == UP_KEY) {

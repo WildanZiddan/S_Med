@@ -25,7 +25,7 @@ void profileOwner(){
         SetColorBlock(4,15);
         clearArea(74,21,58,12);
         gotoxy(74,21);
-        printf("OWN000");
+        printf("STF000");
         gotoprinttext(74,23,"Master Owner");
         gotoprinttext(74,25,"NULL");
 
@@ -40,16 +40,17 @@ void profileOwner(){
     gotoprinttext(45,21,"I D  O W N E R\t\t:");
     gotoprinttext(45,23,"N A M A  L E N G K A P\t:");
     gotoprinttext(45,25,"N O.  T E L E P O N E\t:");
-    gotoprinttext(45,27,"T A N G G A L  L A H I R\t:       \n");
+    gotoprinttext(45,27,"T A N G G A L  L A H I R\t:       ");
+    gotoprinttext(45,29,"R O L E\t\t\t:       \n");
     if(found){
         clearArea(74,21,58,12);
         gotoxy(74,21);
-        generateid("OWN",k.idStaff);
+        generateid("STF",k.idStaff);
         gotoprinttext(74,23,k.FName);
         gotoprinttext(74,25,k.No_telp);
         gotoxy(74,27);
         printf("%02d/%02d/%04d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);
-        gotoxy(74,29);
+        gotoprinttext(74,29,k.role);
 
     }
     fclose(arspstaff);
@@ -87,7 +88,8 @@ void dataStaffMenu(){
         break;
         case 5 :
             BlankDashboard();
-            menuOpsiDashboardOwner();
+        clearArea(5,24,28,4);
+        menuOpsiDashboardOwner();
         break;
     }
 }
@@ -110,37 +112,16 @@ void dataAkun(){
     tampilanTableAkunOwner();
     readAkunDataOwner();
 
-    // switch (output) {
-    //     case 1 :
-    //         BlankDashboard();
-    //         tampilanTableAkunOwner();
-    //         readAkunDataOwner();
-    //     break;
-    //     // case 2 :
-    //     //     BlankDashboard();
-    //     // tampilanTableAkunAdmin();
-    //     // readAkunDataAdmin();
-    //     // break;
-    //     // case 3 :
-    //     //     BlankDashboard();
-    //     // tampilanTableAkunKasir();
-    //     // readAkunDataKasir();
-    //     // break;
-    //     case 4 :
-    //         BlankDashboard();
-    //         clearArea(5,19,28,4);
-    //         menuOpsiDashboardOwner();
-    //     break;
-    // }
 }
 
-void menuOpsiDashboardOwner(){
+    void menuOpsiDashboardOwner(){
     SetColorBlock(15,4);
     SpecialkeyDashboardOwner(5,9,26,4,&output);
     switch (output) {
         case 1 :
             BlankDashboard();
             profileOwner();
+            menuOpsiDashboardOwner();
             break;
         case 2 :
             BlankDashboard();

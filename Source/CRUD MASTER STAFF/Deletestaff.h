@@ -40,6 +40,7 @@ void deleteStaffOwner(){
                 gotoxy(72,20);printf("%d/%d/%d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);
                 gotoxy(72,22);printf("%s",k.username);
                 gotoxy(72,24);printf("%s",k.password);
+                gotoxy(72,26);printf("%s",k.role);
                 SetColorBlock(4,15);
                 gotoxy(65,36);printf("Detail Data yang anda hapus");
                 gotoxy(62,37);printf("Klik apa saja untuk melanjutkan...");
@@ -243,86 +244,29 @@ void menuDeleteDataModifikasiOwner(){
     frameLayout(119,18,120,38,220);
     frameLayout(60,37,120,38,223);
     SetColorBlock(15,12);
-    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
-    switch (output) {
-        case 1:
-            BlankDashboard();
-            SetColorBlock(4,12);
-            tampilanCRUDStaff();
-            DashboardCRUD();
-            readUpdateDataOwner();
-            do {
-                deleteStaffOwner();
-                clearTengah();
-                tampilanCRUDStaff();
-                readUpdateDataOwner();
-                clearKanan();
-                SetColorBlock(15,12);
-                gotoxy(135,23);printf("Anda Ingin Menghapus data lagi ?");
-                SpecialKeyYesorNoDashboard(153, 25,10,15,12,&output);
-                clearKanan();
-            }while(output == 1);
-            hideCursor();
-            SetColorBlock(15,12);
-            gotoprinttext(116,40,"K E M B A L I");
-            if(getch()){
-                BlankDashboard();
-                menuDeleteDataModifikasiOwner();
-            }
-            break;
-        // case 2:
-        //     BlankDashboard();
-        //     SetColorBlock(1,9);
-        //     tampilanCRUDKaryawan();
-        //     DashboardCRUD();
-        //     readUpdateDataAdmin();
-        //     do {
-        //         deleteKaryawanAdmin();
-        //         clearTengah();
-        //         tampilanCRUDKaryawan();
-        //         readUpdateDataAdmin();
-        //         clearKanan();
-        //         SetColorBlock(7,9);
-        //         gotoxy(135,23);printf("Anda Ingin Menghapus data lagi ?");
-        //         SpecialKeyYesorNoDashboard(153, 25,10,7,9,&output);
-        //     }while(output == 1);
-        //     hideCursor();
-        //     SetColorBlock(7,9);
-        //     gotoprinttext(116,40,"K E M B A L I");
-        //     if(getch()){
-        //         BlankDashboard();
-        //         menuDeleteDataModifikasiManajer();
-        //     }
-        //     break;
-        // case 3:
-        //     BlankDashboard();
-        //     SetColorBlock(1,9);
-        //     tampilanCRUDKaryawan();
-        //     DashboardCRUD();
-        //     readUpdateDataKasir();
-        //     do {
-        //         deleteKaryawankasir();
-        //         clearTengah();
-        //         tampilanCRUDKaryawan();
-        //         readUpdateDataKasir();
-        //         clearKanan();
-        //         SetColorBlock(7,9);
-        //         gotoxy(135,23);printf("Anda Ingin Menghapus data lagi ?");
-        //         SpecialKeyYesorNoDashboard(153, 25,10,7,9,&output);
-        //     }while(output == 1);
-        //     hideCursor();
-        //     SetColorBlock(7,9);
-        //     gotoprinttext(116,40,"K E M B A L I");
-        //     if(getch()){
-        //         BlankDashboard();
-        //         menuDeleteDataModifikasiManajer();
-        //     }
-        //     break;
-        case 4:
-            hideCursor();
-            BlankDashboard();
-            dataStaffMenu();
-            break;
+    BlankDashboard();
+    SetColorBlock(4,12);
+    tampilanCRUDStaff();
+    DashboardCRUD();
+    readUpdateDataOwner();
+    do {
+        deleteStaffOwner();
+        clearTengah();
+        tampilanCRUDStaff();
+        readUpdateDataOwner();
+        clearKanan();
+        SetColorBlock(15,12);
+        gotoxy(135,23);printf("Anda Ingin Menghapus data lagi ?");
+        SpecialKeyYesorNoDashboard(153, 25,10,15,12,&output);
+        clearKanan();
+    }while(output == 1);
+    hideCursor();
+    SetColorBlock(15,12);
+    gotoprinttext(116,40,"K E M B A L I");
+    if(getch()){
+        BlankDashboard();
+        clearArea(5,19,28,4);
+        menuOpsiDashboardOwner();
     }
 }
 
