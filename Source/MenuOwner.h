@@ -4,11 +4,15 @@ void menuUpdateDataModifikasiOwner();
 void menuDeleteDataModifikasiOwner();
 void readAkunDataOwner();
 void readAllDataOwner();
+void createDataAlat();
+void readDataAlat();
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
 
 void dataAkun();
+void dataPenjualan();
+void dataAlat();
 
 void menuOpsiDashboardOwner();
 
@@ -71,7 +75,7 @@ void dataStaffMenu(){
     SpecialkeyloginMenuDataOwner(79,24,20,3,&output);
     switch (output) {
          case 1 :
-             BlankDashboard();
+            BlankDashboard();
             dataAkun();
         break;
         case 2 :
@@ -90,6 +94,74 @@ void dataStaffMenu(){
             BlankDashboard();
         clearArea(5,24,28,4);
         menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataAlatMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(4,15);
+    SpecialkeyloginMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+            dataAlat();
+        break;
+        case 2 :
+            BlankDashboard();
+            createDataAlat();
+        break;
+        // case 3 :
+        //     BlankDashboard();
+        // menuUpdateDataModifikasiOwner();
+        // break;
+        // case 4 :
+        //     BlankDashboard();
+        // menuDeleteDataModifikasiOwner();
+        // break;
+        case 5 :
+            BlankDashboard();
+        clearArea(5,24,28,4);
+        menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataPenjualanMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(4,15);
+    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        // case 1 :
+        //     BlankDashboard();
+        //     dataAkun();
+        // break;
+        case 2 :
+            BlankDashboard();
+            dataAlatMenu();
+        break;
+        case 3 :
+            BlankDashboard();
+            clearArea(5,24,28,4);
+            menuOpsiDashboardOwner();
         break;
     }
 }
@@ -114,6 +186,25 @@ void dataAkun(){
 
 }
 
+void dataAlat() {
+    SetColorBlock(4,15);
+    //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,38,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,38,220);
+    frameLayout(119,18,120,38,220);
+    frameLayout(60,37,120,38,223);
+    SetColorBlock(15,12);
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableAlat();
+    readDataAlat();
+}
+
     void menuOpsiDashboardOwner(){
     SetColorBlock(15,4);
     SpecialkeyDashboardOwner(5,9,26,4,&output);
@@ -131,10 +222,10 @@ void dataAkun(){
         //     BlankDashboard();
         //     dataAkun();
         //     break;
-        // case 4 :
-        //     BlankDashboard();
-        //     laporanKeuanganLayout();
-        //     break;
+        case 4 :
+            BlankDashboard();
+            dataPenjualanMenu();
+            break;
         // case 5 :
         //     laporanFilmTerfavorit();
         //     break;

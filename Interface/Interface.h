@@ -854,7 +854,7 @@ void Dashboard(){
 void DashboardCRUD(){
     SetColorBlock(12,12);
     frameLayout(130,9,170,42,32);
-    SetColorBlock(1,15);
+    SetColorBlock(4,15);
     frameLayout(130,9,131,42,223);
     frameLayout(130,9,170,10,223);
     frameLayout(169,9,170,42,223);
@@ -862,9 +862,9 @@ void DashboardCRUD(){
 }
 
 void DashboardDetail(int x1,int x2,int y1, int y2,int l1, int l2, int t1, int t2){
-    SetColorBlock(9,9);
+    SetColorBlock(12,12);
     frameLayout(x1,y1,l1,t1,32);
-    SetColorBlock(1,7);
+    SetColorBlock(4,15);
     frameLayout(x1,y1,l2,t1,223);
     frameLayout(x1,y1,l1,t2,223);
     frameLayout(x2,y1,l1,t1,223);
@@ -1049,9 +1049,9 @@ void kertas(int x,int y, char namaFile[255]){
             gotoprintchar(j,i,219);
         }
     }
-    SetColorBlock(1,15);
+    SetColorBlock(4,15);
     DrawFile(x,y,namaFile);
-    SetColorBlock(1,15);
+    SetColorBlock(4,15);
     frameLayout(36,10,37,40,223);
     frameLayout(36,10,128,11,223);
     frameLayout(127,10,128,40,223);
@@ -1183,13 +1183,13 @@ void lembarLaporanTahunan(){
 }
 
 void showDetail(){
-    SetColorBlock(9,9);
+    SetColorBlock(12,12);
     for(i = 11; i <= 39; i++){
         for(j = 118; j < 169; j++){
             gotoprintchar(j,i,32);
         }
     }
-    SetColorBlock(1,7);
+    SetColorBlock(4,15);
     /*border atas*/
     for(j = 119; j <= 167; j++){
         gotoprintchar(j,11,205);
@@ -1217,7 +1217,7 @@ void showDetail(){
 }
 
 void boxSearch(){
-    SetColorBlock(1,7);
+    SetColorBlock(4,15);
     gotoprintchar(136,9,201);
     for(i = 137; i <= 164;i++){
         gotoprintchar(i,9,205);
@@ -1306,20 +1306,7 @@ void aturkanankekiri(char kata[],int a, int b){
     printf("\n");
 }
 
-
-
-// void diskon(){
-//     if(ms.diskon == 0.85){
-//         strcpy(persen,"15%");
-//     } else if(ms.diskon == 0.90){
-//         strcpy(persen,"10%");
-//     } else if(ms.diskon == 0.95){
-//         strcpy(persen,"5%");
-//     }
-// }
-
 void generateid(char Teks[4],int IDStruct){
-
     if(IDStruct < 10){
         printf("%s00%d", Teks, IDStruct);
     }
@@ -1578,6 +1565,7 @@ void lembarLaporanFilmTerfavorit(){
     gotoprinttext(75,21,"N A M A  F I L M");
     gotoprinttext(141,21,"T I K E T  T E R J U A L");
 }
+
 void batasTable(){
     if (i == 25) {
         moreTable(12);

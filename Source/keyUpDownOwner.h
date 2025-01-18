@@ -1,3 +1,5 @@
+
+
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output) {
     //Declaration
     int count = 1;
@@ -355,11 +357,11 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
 
 
     //Algorithm
-//    BorderSwitchRole(x, y, lebar);
-    // menuDataKaryawanManajer2();
+    //BorderSwitchRole(x, y, lebar);
+    menuDataPenjualan();
     if(count == 1){
         SetColorBlock(0,12);
-        gotoprinttext(78,25,"D A T A  O W N E R");
+        gotoprinttext(80,28,"D A T A  O B A T");
     }
     while (1) {
         ch = getch();
@@ -380,10 +382,6 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
                     *output = count;
                     break;
 
-                case 4 :
-                    Beep(3000, 100);
-                    *output = count;
-                    break;
             }
             break;
         } else if (ch == UP_KEY) {
@@ -393,49 +391,42 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
                 y -= 3;  // Geser ke atas sebanyak 4 unit
                 SetColorBlock(15,12);
 //                BorderSwitchRole(x, y, lebar);
-                // menuDataKaryawanOwner2();
+                menuDataPenjualan();
                 count--;
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(78,25,"D A T A  O W N E R");
-            } else if(count == 2){
+                gotoprinttext(80,28,"D A T A  O B A T");
+            } else if(count==2){
                 SetColorBlock(0,12);
-                gotoprinttext(80,28,"D A T A  A D M I N");
-            } else if(count==3){
+                gotoprinttext(80,31,"D A T A  A L A T");
+            } else if(count ==3){
                 SetColorBlock(0,12);
-                gotoprinttext(80,31,"D A T A  K A S I R");
-            } else if(count ==4){
-                SetColorBlock(0,12);
-                gotoprinttext(80,34,"   K E M B A L I  ");
+                gotoprinttext(80,34,"  K E M B A L I  ");
             }
         } else if (ch == DWN_KEY) {
-            if (count < 4) {
+            if (count < 3) {
                 Beep(1000, 50);
 //                clearArea(x, y, lebar + 2, tinggi);
                 y += 3;  // Geser ke bawah sebanyak 4 unit
 //                BorderSwitchRole(x, y, lebar);
                 SetColorBlock(15,12);
-                // menuDataKaryawanManajer2();
+                menuDataPenjualan();
                 count++;
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(78,25,"D A T A  M A N A J E R");
-            } else if(count == 2){
+                gotoprinttext(80,28,"D A T A  O B A T");
+            } else if(count==2){
                 SetColorBlock(0,12);
-                gotoprinttext(80,28,"D A T A  A D M I N");
-            } else if(count==3){
-                SetColorBlock(0,12);
-                gotoprinttext(80,31,"D A T A  K A S I R");
-            } else if(count ==4){
+                gotoprinttext(80,31,"D A T A  A L A T");
+            } else if(count ==3){
                 SetColorBlock(0,12);
                 gotoprinttext(80,34,"   K E M B A L I  ");
             }
         }
     }
 }
-
 void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
     //Declaration
     int count = 1;

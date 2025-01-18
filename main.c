@@ -30,6 +30,11 @@
 #include "Source/CRUD MASTER STAFF/Updatestaff.h"
 #include "Source/CRUD MASTER STAFF/Deletestaff.h"
 
+#include "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
+#include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+#include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
+
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Createsupplier.h"
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Readsupplier.h"
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/UpdateMakanan.h"

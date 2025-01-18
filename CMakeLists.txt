@@ -16,5 +16,8 @@ add_executable(S_Med main.c
         "Source/CRUD MASTER STAFF/Readstaff.h"
         "Source/CRUD MASTER STAFF/Updatestaff.h"
         "Source/CRUD MASTER STAFF/Deletestaff.h"
+        "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
+        "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+        "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
 )
 target_link_libraries(S_Med winmm)

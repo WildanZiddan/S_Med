@@ -115,8 +115,8 @@ FILE *arspstaff;
 typedef struct supplier{
     int id_Supplier;
     char nama_Supplier[100];
-    char alamat[100];
     char company[50];
+    char alamat[100];
 };
 struct supplier sp;
 FILE *arspsupplier;
@@ -134,6 +134,13 @@ typedef struct obat{
 };
 struct obat obt;
 FILE *arspobat;
+
+typedef struct jenis_obat{
+    int id_JenisObat;
+    char nama_Jenis[100];
+};
+struct jenis_obat jns_obt;
+FILE *arspjenisobat;
 /* ============================================================ */
 
 
@@ -142,10 +149,10 @@ typedef struct alatKesehatan{
     int id_Alat;
     char nama_Alat[100];
     float harga_Alat;
-    struct date tanggalKedaluwarsa;
     int jumlahAlat;
 };
 struct alatKesehatan alt;
+struct alatKesehatan tempalt;
 FILE *arspalat;
 /* ==================================================================== */
 

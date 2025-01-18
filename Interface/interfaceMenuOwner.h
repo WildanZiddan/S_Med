@@ -7,9 +7,9 @@ void menuDashboardOwner(){
     gotoprinttext(15,20,"D A T A");
     gotoprinttext(11,21,"S U P P L I E R");
     gotoprinttext(15,25,"D A T A");
-    gotoprinttext(15,26,"O B A T");
-    gotoprinttext(15,30,"D A T A");
-    gotoprinttext(15,31,"A L A T");
+    gotoprinttext(10,26,"P E M B E L I A N");\
+    gotoprinttext(12,30,"L A P O R A N");
+    gotoprinttext(10,31,"P E N J U A L A N");
     gotoprinttext(13,39,"K E L U A R");
 }
 
@@ -44,11 +44,11 @@ void seluruhDataOwner(){
     gotoprinttext(70,12,"D E T A I L  D A T A");
     gotoprinttext(57,14,"ID STAFF   :");
     gotoprinttext(57,16,"NAMA STAFF :");
-    gotoprinttext(57,18,"NO. TELEPONE  :");
+    gotoprinttext(57,18,"NO. TELEPON   :");
     gotoprinttext(57,20,"TANGGAL LAHIR :");
     gotoprinttext(57,22,"USERNAME      :");
     gotoprinttext(57,24,"PASSWORD      :");
-    gotoprinttext(57,26,"ROLE :");
+    gotoprinttext(57,26,"ROLE         :");
 }
 
 /*------------------------------------Detail Update Data Admin-------------------------------------*/
@@ -123,6 +123,50 @@ void tampilanTableOwner(){
     gotoprinttext(64,11,"N A M A  L E N G K A P");
     gotoprinttext(90,11,"T G L  L A H I R");
     gotoprinttext(113,11,"N O  T E L E P O N E");
+    SetColorBlock(4,15);
+}
+
+void tampilanTableAlat(){
+    SetColorBlock(4,15);
+    /*border atas*/
+    for(i = 9; i <= 9;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,205);
+        }
+    }
+    /*border sudut kiri atas*/
+    gotoprintchar(36,9,201);
+    /*border sudut kanan atas*/
+    gotoprintchar(167,9,187);
+    /*border vertikal kebawah kiri*/
+    for(i = 10; i <= 38;i++){
+        gotoprintchar(36,i,186);
+    }
+    /*border vertikal kebawah kanan*/
+    for(i = 10; i <= 38;i++){
+        gotoprintchar(167,i,186);
+    }
+    /*border sudut bawah kiri*/
+    gotoprintchar(36,38,200);
+    for(i = 38; i <= 38;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,205);
+        }
+    }
+    /*border sudut bawah kanan*/
+    gotoprintchar(167,38,188);
+
+    SetColorBlock(15,4);
+    for(i = 10; i <= 12;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+    gotoprinttext(38,11,"NO.");
+    gotoprinttext(42,11,"I D  A L A T");
+    gotoprinttext(64,11,"N A M A  A L A T");
+    gotoprinttext(90,11,"H A R G A  A L A T");
+    gotoprinttext(113,11,"J U M L A H  A L A T");
     SetColorBlock(4,15);
 }
 
@@ -236,6 +280,14 @@ void tampilanTableAkunOwner(){
     gotoprinttext(110,11,"U S E R N A M E");
     gotoprinttext(140,11,"P A S S W O R D");
     SetColorBlock(4,15);
+}
+
+
+void menuDataPenjualan(){
+    //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(80,28,"D A T A  O B A T");
+    gotoprinttext(80,31,"D A T A  A L A T");
+    gotoprinttext(80,34,"  K E M B A L I  ");
 }
 
 // void tampilanTableAkunAdmin(){
