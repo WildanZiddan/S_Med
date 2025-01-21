@@ -4,8 +4,8 @@ void updateDataOwner(){
     SetColorBlock(15,12);
     showCursor();
     gotoprinttext(140,22,"U P D A T E  D A T A");
-    gotoxy(132,24);printf("Masukan ID Staff: STF");
-    gotoxy(153,24);
+    gotoxy(132,24);printf("Masukkan ID Staff: STF");
+    gotoxy(154,24);
     getnum(&id,3);
     hideCursor();
     SpecialKeyUpdate(152,26,13,3,&output);
@@ -143,7 +143,7 @@ void menuUpdateDataModifikasiOwner(){
     SetColorBlock(15,4);
     do {
         BlankDashboard();
-        tampilanCRUDStaff();
+            tampilanCRUDStaff();
         DashboardCRUD();
         readUpdateDataOwner();
         updateDataOwner();

@@ -6,6 +6,7 @@ void readAkunDataOwner();
 void readAllDataOwner();
 void createDataAlat();
 void readDataAlat();
+void menuUpdateDataModifikasiAlat();
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
@@ -92,8 +93,8 @@ void dataStaffMenu(){
         break;
         case 5 :
             BlankDashboard();
-        clearArea(5,24,28,4);
-        menuOpsiDashboardOwner();
+            clearArea(5,24,28,4);
+            menuOpsiDashboardOwner();
         break;
     }
 }
@@ -120,10 +121,10 @@ void dataAlatMenu(){
             BlankDashboard();
             createDataAlat();
         break;
-        // case 3 :
-        //     BlankDashboard();
-        // menuUpdateDataModifikasiOwner();
-        // break;
+        case 3 :
+            BlankDashboard();
+            menuUpdateDataModifikasiAlat();
+        break;
         // case 4 :
         //     BlankDashboard();
         // menuDeleteDataModifikasiOwner();
@@ -147,7 +148,7 @@ void dataPenjualanMenu(){
     frameLayout(60,18,61,40,220);
     frameLayout(60,40,120,41,223);
     frameLayout(119,18,120,40,220);
-    SetColorBlock(4,15);
+    SetColorBlock(15,12);
     SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
     switch (output) {
         // case 1 :

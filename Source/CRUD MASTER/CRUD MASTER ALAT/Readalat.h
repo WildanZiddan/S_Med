@@ -30,14 +30,14 @@ void readDataAlat() {
             }
             gotoxy(38, y);
             printf("%d", i);
-            gotoxy(47, y);
+            gotoxy(50, y);
             generateid("ALT",alt.id_Alat);
-            gotoxy(75, y);
+            gotoxy(67, y);
             printf("%s\n", alt.nama_Alat);
-            gotoxy(107, y);
+            gotoxy(90, y);
             rupiah(alt.harga_Alat,inputrp);
             printf("%s",inputrp);
-            gotoxy(140, y);
+            gotoxy(120, y);
             printf("%d\n", alt.jumlahAlat);
         } else {
             SetColorBlock(15, 12);
@@ -48,14 +48,14 @@ void readDataAlat() {
             }
             gotoxy(38, y);
             printf("%d", i);
-            gotoxy(47, y);
+            gotoxy(50, y);
             generateid("ALT",alt.id_Alat);
-            gotoxy(75, y);
+            gotoxy(67, y);
             printf("%s\n", alt.nama_Alat);
-            gotoxy(107, y);
+            gotoxy(90, y);
             rupiah(alt.harga_Alat,inputrp);
             printf("%s",inputrp);
-            gotoxy(140, y);
+            gotoxy(120, y);
             printf("%d\n", alt.jumlahAlat);
         }
         i++;
@@ -107,7 +107,7 @@ void readAllDataAlat() {
 void readUpdateDataAlat() {
     i = 1;
     y = 13;
-    arspalat = fopen("../Source/../Database/alatkesehatan.dat", "rb+");
+    arspalat = fopen("../Source/../Database/Dat/alatkesehatan.dat", "rb+");
     while (fread(&alt, sizeof(alt), 1, arspalat) == 1) {
         if (i % 2 == 0) {
             SetColorBlock(15, 4);

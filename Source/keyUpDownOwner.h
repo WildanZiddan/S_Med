@@ -422,7 +422,7 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
                 gotoprinttext(80,31,"D A T A  A L A T");
             } else if(count ==3){
                 SetColorBlock(0,12);
-                gotoprinttext(80,34,"   K E M B A L I  ");
+                gotoprinttext(80,34,"  K E M B A L I ");
             }
         }
     }
@@ -507,6 +507,94 @@ void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
             } else if(count ==3){
                 SetColorBlock(0,12);
                 gotoprinttext(138,23,"U B A H  P A S S W O R D");
+            } else if(count == 4){
+                SetColorBlock(0,12);
+                gotoprinttext(138,25,"     K E M B A L I ");
+            }
+        }
+    }
+}
+
+void SpecialkeyDashboardMenuUpdateDataAlat(int *output){
+    //Declaration
+    int count = 1;
+    char ch;
+
+
+    //Algorithm
+//    BorderSwitchRole(x, y, lebar);
+    menuUpdateDataOwner();
+    if(count == 1){
+        SetColorBlock(0,12);
+        gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+    }
+    while (1) {
+        ch = getch();
+        if (ch == ENTER || ch == TAB) {
+            switch (count) {
+                case 1 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+                case 2 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+                case 3 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+                case 4 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+            }
+            break;
+        } else if (ch == UP_KEY) {
+            if (count > 1) {
+                Beep(1000, 100);
+//                clearArea(x, y, lebar + 2, tinggi);
+                 // Geser ke atas sebanyak 4 unit
+                SetColorBlock(15,12);
+//                BorderSwitchRole(x, y, lebar);
+                menuUpdateDataOwner();
+                count--;
+            }
+            if(count == 1){
+                SetColorBlock(0,12);
+                gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+            } else if(count == 2){
+                SetColorBlock(0,12);
+                gotoprinttext(138,21,"U B A H  H A R G A");
+            } else if(count ==3){
+                SetColorBlock(0,12);
+                gotoprinttext(138,23,"U B A H  J U M L A H");
+            } else if(count == 4){
+                SetColorBlock(0,12);
+                gotoprinttext(138,25,"     K E M B A L I ");
+            }
+        } else if (ch == DWN_KEY) {
+            if (count < 4) {
+                Beep(1000, 100);
+//                clearArea(x, y, lebar + 2, tinggi);
+                // Geser ke bawah sebanyak 4 unit
+//                BorderSwitchRole(x, y, lebar);
+                SetColorBlock(15,12);
+                menuUpdateDataOwner();
+                count++;
+            }
+            if(count == 1){
+                SetColorBlock(0,12);
+                gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+            } else if(count == 2){
+                SetColorBlock(0,12);
+                gotoprinttext(138,21,"U B A H  H A R G A");
+            } else if(count ==3){
+                SetColorBlock(0,12);
+                gotoprinttext(138,23,"U B A H  J U M L A H");
             } else if(count == 4){
                 SetColorBlock(0,12);
                 gotoprinttext(138,25,"     K E M B A L I ");

@@ -19,5 +19,6 @@ add_executable(S_Med main.c
         "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
         "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
         "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
+        "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 )
 target_link_libraries(S_Med winmm)
