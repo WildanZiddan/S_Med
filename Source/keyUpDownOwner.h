@@ -523,10 +523,10 @@ void SpecialkeyDashboardMenuUpdateDataAlat(int *output){
 
     //Algorithm
 //    BorderSwitchRole(x, y, lebar);
-    menuUpdateDataOwner();
+    menuUpdateDataAlat();
     if(count == 1){
         SetColorBlock(0,12);
-        gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+        gotoprinttext(138,19,"U B A H  N A M A  A L A T");
     }
     while (1) {
         ch = getch();
@@ -560,21 +560,21 @@ void SpecialkeyDashboardMenuUpdateDataAlat(int *output){
                  // Geser ke atas sebanyak 4 unit
                 SetColorBlock(15,12);
 //                BorderSwitchRole(x, y, lebar);
-                menuUpdateDataOwner();
+                menuUpdateDataAlat();
                 count--;
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+                gotoprinttext(138,19,"U B A H  N A M A  A L A T");
             } else if(count == 2){
                 SetColorBlock(0,12);
-                gotoprinttext(138,21,"U B A H  H A R G A");
+                gotoprinttext(142,21,"U B A H  H A R G A");
             } else if(count ==3){
                 SetColorBlock(0,12);
-                gotoprinttext(138,23,"U B A H  J U M L A H");
+                gotoprinttext(140,23,"U B A H  J U M L A H");
             } else if(count == 4){
                 SetColorBlock(0,12);
-                gotoprinttext(138,25,"     K E M B A L I ");
+                gotoprinttext(140,25,"     K E M B A L I ");
             }
         } else if (ch == DWN_KEY) {
             if (count < 4) {
@@ -583,21 +583,21 @@ void SpecialkeyDashboardMenuUpdateDataAlat(int *output){
                 // Geser ke bawah sebanyak 4 unit
 //                BorderSwitchRole(x, y, lebar);
                 SetColorBlock(15,12);
-                menuUpdateDataOwner();
+                menuUpdateDataAlat();
                 count++;
             }
             if(count == 1){
                 SetColorBlock(0,12);
-                gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+                gotoprinttext(138,19,"U B A H  N A M A  A L A T");
             } else if(count == 2){
                 SetColorBlock(0,12);
-                gotoprinttext(138,21,"U B A H  H A R G A");
+                gotoprinttext(142,21,"U B A H  H A R G A");
             } else if(count ==3){
                 SetColorBlock(0,12);
-                gotoprinttext(138,23,"U B A H  J U M L A H");
+                gotoprinttext(140,23,"U B A H  J U M L A H");
             } else if(count == 4){
                 SetColorBlock(0,12);
-                gotoprinttext(138,25,"     K E M B A L I ");
+                gotoprinttext(140,25,"     K E M B A L I ");
             }
         }
     }

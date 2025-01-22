@@ -39,10 +39,10 @@ void menuUpdateDataOwner(){
 }
 
 void menuUpdateDataAlat(){
-    gotoprinttext(137,19,"U B A H  N A M A  A L A T");
+    gotoprinttext(138,19,"U B A H  N A M A  A L A T");
     gotoprinttext(142,21,"U B A H  H A R G A");
-    gotoprinttext(138,23,"U B A H  J U M L A H");
-    gotoprinttext(138,25,"     K E M B A L I ");
+    gotoprinttext(140,23,"U B A H  J U M L A H");
+    gotoprinttext(140,25,"     K E M B A L I ");
 }
 
 /*------------------------------------Detail Update Data Staff-------------------------------------*/

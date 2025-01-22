@@ -7,6 +7,7 @@ void readAllDataOwner();
 void createDataAlat();
 void readDataAlat();
 void menuUpdateDataModifikasiAlat();
+void menuDeleteDataModifikasiAlat();
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
@@ -125,10 +126,10 @@ void dataAlatMenu(){
             BlankDashboard();
             menuUpdateDataModifikasiAlat();
         break;
-        // case 4 :
-        //     BlankDashboard();
-        // menuDeleteDataModifikasiOwner();
-        // break;
+        case 4 :
+            BlankDashboard();
+            menuDeleteDataModifikasiAlat();
+            break;
         case 5 :
             BlankDashboard();
         clearArea(5,24,28,4);

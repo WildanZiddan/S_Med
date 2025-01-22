@@ -1,3 +1,4 @@
+
 void updateDataAlat(){
     i = 1;
     y = 13;

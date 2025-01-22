@@ -33,7 +33,7 @@
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
-// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Createalat.h"
+#include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Createsupplier.h"
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Readsupplier.h"

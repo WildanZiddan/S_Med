@@ -30,11 +30,6 @@ void createDataAlat(){
     fgets(alt.nama_Alat, sizeof(alt.nama_Alat), stdin);
     alt.nama_Alat[strcspn(alt.nama_Alat, "\n")] = 0; // Hapus newline
 
-    // gotoxy(40, 21);
-    // printf("H A R G A  A L A T    : ");
-    // gotoxy(79, 21);
-    // scanf("%f", &alt.harga_Alat);
-
     fflush(stdin);
     showCursor();
     gotoxy(40, 21);

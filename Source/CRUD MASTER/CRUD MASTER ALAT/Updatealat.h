@@ -68,27 +68,46 @@ void updateAlat() {
                         gotoxy(132, 24);
                         SetColorBlock(15, 12);
                         printf("Masukkan Harga Alat Baru: ");
-                        gotoxy(132, 25);
-                        scanf("%d", &alt.harga_Alat);  // Ambil input jumlah anak kelas baru
+                        gotoxy(154, 24);
+                        getRp(&alt.harga_Alat,4,9,79,21);  // Ambil input harga baru
                         hideCursor();
-                        MessageBox(NULL, "Jumlah Harga Alat Berhasil Diubah", "NOTIFICATION!", MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
-                        fwrite(&alt, sizeof(alt), 1, ft);
-                    break;
+                        MessageBox(NULL, "Harga Alat Berhasil Diubah", "NOTIFICATION!", MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
+                        while (fread(&alt, sizeof(alt), 1, arspalat) == 1) {
+                            fwrite(&alt, sizeof(alt), 1, ft);
+                        }
+                        fclose(arspalat);
+                        fclose(ft);
+                        remove("../Source/../Database/Dat/alatkesehatan.dat");
+                        rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/alatkesehatan.dat");
+                        break;
 
                     case 3:  // Update Jumlah Alat
                         clearKanan();
                         showCursor();
                         gotoxy(132, 24);
                         SetColorBlock(15, 12);
-                        printf("Masukkan Jumlah Alat Baru: ");
-                        gotoxy(132, 25);
+                        printf("Masukkan Jumlah Alat: ");
+                        gotoxy(154, 24);
                         scanf("%d", &alt.jumlahAlat);  // Ambil input tingkat kelas baru
                         hideCursor();
-                        MessageBox(NULL, "Tingkat Kelas Berhasil Diubah", "NOTIFICATION!", MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
+                        MessageBox(NULL, "Jumlah Alat Berhasil Diubah", "NOTIFICATION!", MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
+                    while (fread(&alt, sizeof(alt), 1, arspalat) == 1) {
                         fwrite(&alt, sizeof(alt), 1, ft);
+                    }
+                    fclose(arspalat);
+                    fclose(ft);
+                    remove("../Source/../Database/Dat/alatkesehatan.dat");
+                    rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/alatkesehatan.dat");
+                    break;
+                    case 4 :
+                        fclose(arspalat);
+                        fclose(ft);
+                        BlankDashboard();
+                        dataPenjualanMenu();
                     break;
                 }
-            } else {
+            }
+            else {
                 MessageBox(NULL,"ID Staff Tidak Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
                 SetColorBlock(12,12);
                 for(i = 154; i < 169; i++){
