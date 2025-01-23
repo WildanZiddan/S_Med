@@ -173,6 +173,50 @@ void tampilanTableAlat(){
     SetColorBlock(4,15);
 }
 
+void tampilanTableSupplier(){
+    SetColorBlock(4,15);
+    /*border atas*/
+    for(i = 9; i <= 9;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,205);
+        }
+    }
+    /*border sudut kiri atas*/
+    gotoprintchar(36,9,201);
+    /*border sudut kanan atas*/
+    gotoprintchar(167,9,187);
+    /*border vertikal kebawah kiri*/
+    for(i = 10; i <= 38;i++){
+        gotoprintchar(36,i,186);
+    }
+    /*border vertikal kebawah kanan*/
+    for(i = 10; i <= 38;i++){
+        gotoprintchar(167,i,186);
+    }
+    /*border sudut bawah kiri*/
+    gotoprintchar(36,38,200);
+    for(i = 38; i <= 38;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,205);
+        }
+    }
+    /*border sudut bawah kanan*/
+    gotoprintchar(167,38,188);
+
+    SetColorBlock(15,4);
+    for(i = 10; i <= 12;i++){
+        for(j = 37; j < 167; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+    gotoprinttext(38,11,"NO.");
+    gotoprinttext(47,11,"I D  S U P P L I E R");
+    gotoprinttext(60,11,"N A M A  S U P P L I E R");
+    gotoprinttext(82,11,"C O M P A N Y");
+    gotoprinttext(109,11,"A L A M A T");
+    SetColorBlock(4,15);
+}
+
 void seluruhDataSupplier(){
     SetColorBlock(15,12);
     gotoprinttext(70,12,"D E T A I L  D A T A");

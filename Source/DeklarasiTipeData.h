@@ -117,6 +117,7 @@ typedef struct supplier{
     char nama_Supplier[100];
     char company[50];
     char alamat[100];
+    int status;
 };
 struct supplier sp;
 FILE *arspsupplier;

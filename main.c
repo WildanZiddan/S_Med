@@ -35,8 +35,18 @@
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 
-//#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Createsupplier.h"
-//#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Readsupplier.h"
+#include "Source/CRUD MASTER/CRUD MASTER OBAT/Createobat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
+
+#include "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Createjenis.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
+// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
+
+#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Createsupplier.h"
+#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Readsupplier.h"
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/UpdateMakanan.h"
 //#include "Source/CRUD MASTER/CRUD MASTER SUPPLIER/DeleteMakanan.h"
 

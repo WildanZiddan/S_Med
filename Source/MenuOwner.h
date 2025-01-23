@@ -2,6 +2,8 @@ void menuReadDataModifikasiOwner();
 void menuCreateDataModifikasiOwner();
 void menuUpdateDataModifikasiOwner();
 void menuDeleteDataModifikasiOwner();
+void createDataSupplier();
+void readDataSupplier();
 void readAkunDataOwner();
 void readAllDataOwner();
 void createDataAlat();
@@ -15,6 +17,7 @@ void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
 void dataAkun();
 void dataPenjualan();
 void dataAlat();
+void dataSupplier();
 
 void menuOpsiDashboardOwner();
 
@@ -91,6 +94,44 @@ void dataStaffMenu(){
         case 4 :
             BlankDashboard();
             menuDeleteDataModifikasiOwner();
+        break;
+        case 5 :
+            BlankDashboard();
+            clearArea(5,24,28,4);
+            menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataSupplierMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(4,15);
+    SpecialkeyloginMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+            dataSupplier();
+        break;
+        case 2 :
+            BlankDashboard();
+            createDataSupplier();
+        break;
+        case 3 :
+            BlankDashboard();
+            //menuUpdateDataModifikasiOwner();
+        break;
+        case 4 :
+            BlankDashboard();
+            //menuDeleteDataModifikasiOwner();
         break;
         case 5 :
             BlankDashboard();
@@ -207,6 +248,25 @@ void dataAlat() {
     readDataAlat();
 }
 
+void dataSupplier() {
+    SetColorBlock(4,15);
+    //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,38,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,38,220);
+    frameLayout(119,18,120,38,220);
+    frameLayout(60,37,120,38,223);
+    SetColorBlock(15,12);
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableSupplier();
+    readDataSupplier();
+}
+
     void menuOpsiDashboardOwner(){
     SetColorBlock(15,4);
     SpecialkeyDashboardOwner(5,9,26,4,&output);
@@ -220,10 +280,10 @@ void dataAlat() {
             BlankDashboard();
             dataStaffMenu();
         break;
-        // case 3 :
-        //     BlankDashboard();
-        //     dataAkun();
-        //     break;
+        case 3 :
+            BlankDashboard();
+            dataSupplierMenu();
+            break;
         case 4 :
             BlankDashboard();
             dataPenjualanMenu();
