@@ -1,5 +1,3 @@
-
-
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output) {
     //Declaration
     int count = 1;
@@ -427,6 +425,85 @@ void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *o
         }
     }
 }
+
+void SpecialkeyDashboardMenuDataObat(int x, int y, int lebar,int tinggi, int *output) {
+    //Declaration
+    int count = 1;
+    char ch;
+
+
+    //Algorithm
+    //BorderSwitchRole(x, y, lebar);
+    menuDataObat();
+    if(count == 1){
+        SetColorBlock(0,12);
+        gotoprinttext(80,28,"C R U D  O B A T");
+    }
+    while (1) {
+        ch = getch();
+        if (ch == ENTER || ch == TAB) {
+            switch (count) {
+                case 1 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+                case 2 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+                case 3 :
+                    Beep(3000, 100);
+                    *output = count;
+                    break;
+
+            }
+            break;
+        } else if (ch == UP_KEY) {
+            if (count > 1) {
+                Beep(1000, 50);
+//                clearArea(x, y, lebar + 2, tinggi);
+                y -= 3;  // Geser ke atas sebanyak 4 unit
+                SetColorBlock(15,12);
+//                BorderSwitchRole(x, y, lebar);
+                menuDataObat();
+                count--;
+            }
+            if(count == 1){
+                SetColorBlock(0,12);
+                gotoprinttext(80,28,"C R U D  O B A T");
+            } else if(count==2){
+                SetColorBlock(0,12);
+                gotoprinttext(80,31,"J E N I S  O B A T");
+            } else if(count ==3){
+                SetColorBlock(0,12);
+                gotoprinttext(80,34,"  K E M B A L I  ");
+            }
+        } else if (ch == DWN_KEY) {
+            if (count < 3) {
+                Beep(1000, 50);
+//                clearArea(x, y, lebar + 2, tinggi);
+                y += 3;  // Geser ke bawah sebanyak 4 unit
+//                BorderSwitchRole(x, y, lebar);
+                SetColorBlock(15,12);
+                menuDataObat();
+                count++;
+            }
+            if(count == 1){
+                SetColorBlock(0,12);
+                gotoprinttext(80,28,"C R U D  O B A T");
+            } else if(count==2){
+                SetColorBlock(0,12);
+                gotoprinttext(80,31,"J E N I S  O B A T");
+            } else if(count ==3){
+                SetColorBlock(0,12);
+                gotoprinttext(80,34,"  K E M B A L I ");
+            }
+        }
+    }
+}
+
 void SpecialkeyDashboardMenuUpdateDataOwner(int *output){
     //Declaration
     int count = 1;

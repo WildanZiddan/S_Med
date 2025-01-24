@@ -276,7 +276,7 @@ void userPass(char username[],char password[]){
 void login() {
     header(5, 2);
     SetColorBlock(4, 15);
-    logologin(63, 3);
+    logologin(63, 4);
     SetColorBlock(4, 15);
     frame(60, 14);
     menuBackSign();

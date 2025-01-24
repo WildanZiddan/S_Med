@@ -2,24 +2,37 @@ void menuReadDataModifikasiOwner();
 void menuCreateDataModifikasiOwner();
 void menuUpdateDataModifikasiOwner();
 void menuDeleteDataModifikasiOwner();
+
 void createDataSupplier();
 void readDataSupplier();
+
 void readAkunDataOwner();
 void readAllDataOwner();
+
 void createDataAlat();
 void readDataAlat();
 void menuUpdateDataModifikasiAlat();
 void menuDeleteDataModifikasiAlat();
+
+void createDataJenisObat();
+
+void createDataObat();
+void readDataObat();
+
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardOwner(int x, int y, int lebar,int tinggi, int *output);
+void SpecialkeyDashboardMenuDataObat(int x, int y, int lebar,int tinggi, int *output);
 
 void dataAkun();
 void dataPenjualan();
 void dataAlat();
+void dataObat();
 void dataSupplier();
 
 void menuOpsiDashboardOwner();
+
+void TambahDetailPembelianObat();
 
 void profileOwner(){
     arspstaff = fopen("../Source/../Database/Dat/staff.dat","rb");
@@ -179,7 +192,102 @@ void dataAlatMenu(){
     }
 }
 
-void dataPenjualanMenu(){
+void dataObatMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(4,15);
+    SpecialkeyloginMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+            dataObat();
+        break;
+        case 2 :
+            BlankDashboard();
+        createDataObat();
+        break;
+        case 3 :
+            BlankDashboard();
+            menuUpdateDataModifikasiAlat();
+        break;
+        case 4 :
+            BlankDashboard();
+            menuDeleteDataModifikasiAlat();
+        break;
+        case 5 :
+            BlankDashboard();
+            clearArea(5,24,28,4);
+            menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataJenis() {
+    SetColorBlock(4,15);
+    //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,38,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,38,220);
+    frameLayout(119,18,120,38,220);
+    frameLayout(60,37,120,38,223);
+    SetColorBlock(15,12);
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableJenis();
+    readDataJenis();
+}
+
+void dataJenisObatMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(4,15);
+    SpecialkeyloginMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+            dataJenis();
+        break;
+        case 2 :
+            BlankDashboard();
+        createDataJenisObat();
+        break;
+        case 3 :
+            BlankDashboard();
+            //menuUpdateDataModifikasiAlat();
+        break;
+        case 4 :
+            BlankDashboard();
+            //menuDeleteDataModifikasiAlat();
+        break;
+        case 5 :
+            BlankDashboard();
+            clearArea(5,24,28,4);
+            menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataDaftarObatMenu(){
     SetColorBlock(4,15);
     //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
     DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
@@ -191,20 +299,20 @@ void dataPenjualanMenu(){
     frameLayout(60,40,120,41,223);
     frameLayout(119,18,120,40,220);
     SetColorBlock(15,12);
-    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
+    SpecialkeyDashboardMenuDataObat(79,24,20,3,&output);
     switch (output) {
-        // case 1 :
-        //     BlankDashboard();
-        //     dataAkun();
-        // break;
+        case 1 :
+            BlankDashboard();
+            dataObatMenu();
+            break;
         case 2 :
             BlankDashboard();
-            dataAlatMenu();
+            dataJenisObatMenu();
         break;
         case 3 :
             BlankDashboard();
-            clearArea(5,24,28,4);
-            menuOpsiDashboardOwner();
+        clearArea(5,24,28,4);
+        menuOpsiDashboardOwner();
         break;
     }
 }
@@ -248,6 +356,25 @@ void dataAlat() {
     readDataAlat();
 }
 
+void dataObat() {
+    SetColorBlock(4,15);
+    //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,38,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,38,220);
+    frameLayout(119,18,120,38,220);
+    frameLayout(60,37,120,38,223);
+    SetColorBlock(15,12);
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableObat();
+    readDataObat();
+}
+
 void dataSupplier() {
     SetColorBlock(4,15);
     //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
@@ -265,6 +392,36 @@ void dataSupplier() {
     BlankDashboard();
     tampilanTableSupplier();
     readDataSupplier();
+}
+
+void dataPenjualanMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(15,12);
+    SpecialkeyDashboardMenuDataOwner(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+        dataDaftarObatMenu();
+        break;
+        case 2 :
+            BlankDashboard();
+        dataAlatMenu();
+        break;
+        case 3 :
+            BlankDashboard();
+        clearArea(5,24,28,4);
+        menuOpsiDashboardOwner();
+        break;
+    }
 }
 
     void menuOpsiDashboardOwner(){
@@ -288,9 +445,9 @@ void dataSupplier() {
             BlankDashboard();
             dataPenjualanMenu();
             break;
-        // case 5 :
-        //     laporanFilmTerfavorit();
-        //     break;
+        case 5 :
+            TambahDetailPembelianObat();
+            break;
         case 6:
             // audioFile = "../Sound/andayakininginkeluar.wav";
             // playCustomSound(audioFile);
@@ -306,3 +463,4 @@ void dataSupplier() {
             break;
     }
 }
+

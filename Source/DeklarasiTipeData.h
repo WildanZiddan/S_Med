@@ -125,23 +125,24 @@ FILE *arspsupplier;
 
 
 /* ==================== TABLE MASTER OBAT ==================== */
-typedef struct obat{
-    int id_Obat;
-    char nama_Obat[100];
-    char jenis_Obat[15];
-    float harga_Obat;
-    struct date tanggalKedaluwarsa;
-    int jumlahObat;
-};
-struct obat obt;
-FILE *arspobat;
-
 typedef struct jenis_obat{
     int id_JenisObat;
     char nama_Jenis[100];
 };
 struct jenis_obat jns_obt;
 FILE *arspjenisobat;
+
+typedef struct obat{
+    int id_Obat;
+    char nama_Obat[100];
+    int id_JenisObat;
+    char nama_Jenis[100];
+    float harga_Obat;
+    struct date tanggalKedaluwarsa;
+    int jumlahObat;
+};
+struct obat obt;
+FILE *arspobat;
 /* ============================================================ */
 
 
@@ -185,6 +186,34 @@ typedef struct{
 detailTjualobat dtjo;
 FILE *arsdetailobat;
 
+typedef struct tBeliObat{
+    int id_transaksi;
+    struct date tgl_pembelian;
+    int id_Obat;
+    int idStaff;
+    char FName[100];
+    float sub_total;
+    float total_harga;
+};
+struct tBeliObat temptrsbo;
+struct tBeliObat trsbo;
+FILE *arspbeliobat;
+
+//DETAIL TRANSAKSI PENJUALAN OBAT
+typedef struct detailTbeliobat{
+    int id_transaksi;
+    int id_Obat;
+    char nama_Obat[100];
+    int id_JenisObat;
+    char nama_Jenis[100];
+    float harga_Obat;
+    int jumlahObat;
+    float subtotal;
+
+};
+struct detailTbeliobat dtbo;
+FILE *arsdetailbeliobat;
+
 /* ==================== TABLE TRANSAKSI PENJUALAN ALAT ==================== */
 typedef struct tJualAlat{
     int id_transaksi;
@@ -212,10 +241,11 @@ detailTjual dtja;
 FILE *arsdetailalat;
 
 /* ==================== TABLE KERANJANG ==================== */
-typedef struct{ char nama [25];
+typedef struct keranjang{
+    char nama [25];
     int qty;
-}keranjang;
-keranjang krj;
+};
+struct keranjang krj;
 FILE *arskrj;
 
-FILE *fp,*ft;
+FILE *fp,*ft,*Temp;

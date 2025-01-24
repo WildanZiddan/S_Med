@@ -36,12 +36,12 @@
 #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 
 #include "Source/CRUD MASTER/CRUD MASTER OBAT/Createobat.h"
-// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+#include "Source/CRUD MASTER/CRUD MASTER OBAT/Readobat.h"
 // #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
 // #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 
 #include "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Createjenis.h"
-// #include "Source/CRUD MASTER/CRUD MASTER ALAT/Readalat.h"
+#include "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Readjenis.h"
 // #include "Source/CRUD MASTER/CRUD MASTER ALAT/Updatealat.h"
 // #include "Source/CRUD MASTER/CRUD MASTER ALAT/Deletealat.h"
 
@@ -87,7 +87,7 @@
 // #include "Source/CRUD MASTER/CRUD MASTER TIKET/DeleteTiket.h"
 //
 //
-// #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MAKANAN/createTransaksiMakanan.h"
+#include "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/createTransaksiPembelianObat.h"
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MAKANAN/readTransaksiMakanan.h"
 //
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MERCHANDISE/createTransaksiMerchandise.h"
@@ -107,5 +107,6 @@ int main() {
     disableScrollBar();
     fullscreen();
     system("color fc");
-    tampilanAwal();
+    // tampilanAwal();
+    DashboardOwner();
 }

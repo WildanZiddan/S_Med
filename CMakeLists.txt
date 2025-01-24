@@ -24,5 +24,8 @@ add_executable(S_Med main.c
         "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Createjenis.h"
         "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Createsupplier.h"
         "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Readsupplier.h"
+        "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Readjenis.h"
+        "Source/CRUD MASTER/CRUD MASTER OBAT/Readobat.h"
+        "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/createTransaksiPembelianObat.h"
 )
 target_link_libraries(S_Med winmm)
