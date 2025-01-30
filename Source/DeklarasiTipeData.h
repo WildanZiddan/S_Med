@@ -1,9 +1,3 @@
-#ifndef DEKLARASITIPEDATA_H
-#define DEKLARASITIPEDATA_H
-#include <stdio.h>
-
-#endif //DEKLARASI_H
-
 /*==================== FUNCTION BUTTONS ====================*/
 #define ENTER 13
 #define TAB 9
@@ -58,6 +52,8 @@ char namaFile[100];
 char ans, uang[25],biaya[25];
 char namaStaff[100];
 char namabulan[20];
+char status[2][100]= {"Pesanan Telah Dibayar!", "Pesanan Telah Diterima"};
+
 
 /* ========================================================= */
 
@@ -186,14 +182,22 @@ typedef struct{
 detailTjualobat dtjo;
 FILE *arsdetailobat;
 
+//================================
 typedef struct tBeliObat{
     int id_transaksi;
+    int id_Supplier;
+    char nama_Supplier[100];
     struct date tgl_pembelian;
+    struct date tgl_penerimaan;
+    int pilihan;
+    int id_Alat;
     int id_Obat;
     int idStaff;
     char FName[100];
     float sub_total;
     float total_harga;
+    char status[100];
+    //const char *status[] = { "P e s a n a n  t e l a h  s i a p !", "P e s a n a n  d i t e r i m a !" };
 };
 struct tBeliObat temptrsbo;
 struct tBeliObat trsbo;
@@ -203,11 +207,10 @@ FILE *arspbeliobat;
 typedef struct detailTbeliobat{
     int id_transaksi;
     int id_Obat;
-    char nama_Obat[100];
-    int id_JenisObat;
-    char nama_Jenis[100];
-    float harga_Obat;
-    int jumlahObat;
+    int id_Alat;
+    char nama[100];
+    float harga;
+    int jumlah;
     float subtotal;
 
 };
@@ -215,29 +218,31 @@ struct detailTbeliobat dtbo;
 FILE *arsdetailbeliobat;
 
 /* ==================== TABLE TRANSAKSI PENJUALAN ALAT ==================== */
-typedef struct tJualAlat{
+typedef struct tBeliAlat{
     int id_transaksi;
+    int id_Supplier;
     struct date tgl_pembelian;
     int id_Alat;
     int idStaff;
     char nama_Staff[100];
     float sub_total;
     float total_harga;
+    char status[100];
 };
-struct tJualAlat temptrsja;
-struct tJualAlat trsja;
-FILE *arspjualobat;
+struct tBeliAlat temptrsba;
+struct tBeliAlat trsba;
+FILE *arspbelialat;
 
 //DETAIL TRANSAKSI PENJUALAN ALAT
-typedef struct{
+typedef struct detailTbelialat{
     int id_transaksi;
     int id_Alat;
     char nama_Alat[100];
-    float harga;
-    int qty;
+    float harga_Obat;
+    int jumlahObat;
     float subtotal;
-}detailTjual;
-detailTjual dtja;
+};
+struct detailTbelialat dtba;
 FILE *arsdetailalat;
 
 /* ==================== TABLE KERANJANG ==================== */

@@ -749,6 +749,14 @@ void BlankDesain(){
     }
 }
 
+void BlankTeks(){
+    SetColorBlock(12,12);
+    for(i = 19; i <= 19; i++){
+        for(j = 40; j < 75; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+}
 
 // void cancelCharMakanan(char batal[255]){
 //     if(strcasecmp(batal,"0")==0){
@@ -891,7 +899,7 @@ void BlankDashboard(){
 
 void clearTransaksi(){
     SetColorBlock(12,12);
-    for(i = 17; i < 38; i++){
+    for(i = 23; i < 38; i++){
         for(j = 69; j < 110; j++){
             gotoprintchar(j,i,32);
         }
@@ -967,14 +975,14 @@ void frameDetail(int x, int y, char filename[255]){
 }
 
 
-void frameTransaksi(int x, int y, char filename[255]){
-    SetColorBlock(9,9);
+void frameTransaksi(int x, int y){
+    SetColorBlock(12,12);
     for(i = 11; i < 40; i++){
         for(j = 37; j < 116; j++){
             gotoprintchar(j,i,32);
         }
     }
-    SetColorBlock(7,7);
+    SetColorBlock(15,15);
     gotoprintchar(37,11,219);
     gotoprintchar(38,11,219);
     gotoprintchar(37,12,219);
@@ -991,7 +999,7 @@ void frameTransaksi(int x, int y, char filename[255]){
     gotoprintchar(115,39,219);
     gotoprintchar(115,38,219);
 
-    SetColorBlock(7,9);
+    SetColorBlock(15,12);
     gotoprintchar(40,11,201);
     for(i=41; i <= 111;i++){
         gotoprintchar(i,11,205);
@@ -1031,11 +1039,10 @@ void frameTransaksi(int x, int y, char filename[255]){
     for(i = 14; i <=36; i++){
         gotoprintchar(114,i,186);
     }
-    SetColorBlock(7,9);
-    DrawFile(x,y,filename);
+    SetColorBlock(15,12);
 }
 void clearTableTransaksi(){
-    SetColorBlock(7,7);
+    SetColorBlock(15,15);
     for(i = 11; i <= 39; i++){
         for(j = 118; j < 169; j++){
             gotoprintchar(j,i,32);

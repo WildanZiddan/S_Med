@@ -8,8 +8,8 @@ void menuDashboardOwner(){
     gotoprinttext(11,21,"S U P P L I E R");
     gotoprinttext(15,25,"D A T A");
     gotoprinttext(10,26,"P E M B E L I A N");\
-    gotoprinttext(12,30,"L A P O R A N");
-    gotoprinttext(10,31,"P E N J U A L A N");
+    gotoprinttext(10,30,"A K T I F I T A S");
+    gotoprinttext(13,31,"B I S N I S");
     gotoprinttext(13,39,"K E L U A R");
 }
 
@@ -257,7 +257,7 @@ void tampilanTableJenis(){
     }
     gotoprinttext(38,11,"NO.");
     gotoprinttext(47,11,"I D  A L A T");
-    gotoprinttext(60,11,"N A M A  J E N I S");
+    gotoprinttext(65,11,"N A M A  J E N I S");
     SetColorBlock(4,15);
 }
 
@@ -469,11 +469,32 @@ void menuDataPenjualan(){
     gotoprinttext(80,34," K E M B A L I ");
 }
 
+void menuDataTransaksi(){
+    //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(80,28,"P E M B E L I A N");
+    gotoprinttext(79,31,"P E N E R I M A A N");
+    gotoprinttext(80,34," K E M B A L I ");
+}
+
+void menuDataTransaksiPembelian(){
+    //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(76,28,"L I H A T  D A T A");
+    gotoprinttext(74,31,"T A M B A H  T R A N S A K S I");
+    gotoprinttext(80,34," K E M B A L I ");
+}
+
 void menuDataObat(){
     //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
     gotoprinttext(80,28,"C R U D  O B A T");
     gotoprinttext(80,31,"J E N I S  O B A T");
     gotoprinttext(80,34," K E M B A L I ");
+}
+
+void menuDataAktifitas(){
+    //DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(80,28,"T R A N S A K S I");
+    gotoprinttext(82,31,"L A P O R A N");
+    gotoprinttext(82,34,"K E M B A L I");
 }
 
 // void tampilanTableAkunAdmin(){
@@ -591,7 +612,7 @@ void tampilanTransaksiPembelianObat(){
     /*border sudut bawah kanan*/
     gotoprintchar(168,39,188);
 
-    SetColorBlock(7,1);
+    SetColorBlock(15,4);
     for(i = 12; i <= 14;i++){
         for(j = 119; j < 168; j++){
             gotoprintchar(j,i,32);
@@ -599,9 +620,49 @@ void tampilanTransaksiPembelianObat(){
     }
 
     gotoprinttext(120,13,"NO.");
-    gotoprinttext(124,13,"ID OBAT");
-    gotoprinttext(135,13,"NAMA OBAT");
-    gotoprinttext(161,13,"STOK OBAT");
+    gotoprinttext(126,13,"ID OBAT");
+    gotoprinttext(136,13,"NAMA OBAT");
+    gotoprinttext(158,13,"STOK OBAT");
+}
+
+void tampilanTransaksiPembelianAlat(){
+    SetColorBlock(4,15);
+    /*border atas*/
+    for(j = 119; j <= 167; j++){
+        gotoprintchar(j,11,205);
+    }
+    /*border sudut kiri atas*/
+    gotoprintchar(118,11,201);
+    /*border sudut kanan atas*/
+    gotoprintchar(168,11,187);
+    /*border vertikal kebawah kiri*/
+    for(i = 12; i <= 38;i++){
+        gotoprintchar(118,i,186);
+    }
+    /*border vertikal kebawah kanan*/
+    for(i = 12; i <= 38;i++){
+        gotoprintchar(168,i,186);
+    }
+    /*border sudut bawah kiri*/
+    gotoprintchar(118,39,200);
+    for(j = 119; j <= 167; j++){
+        gotoprintchar(j,39,205);
+    }
+
+    /*border sudut bawah kanan*/
+    gotoprintchar(168,39,188);
+
+    SetColorBlock(15,4);
+    for(i = 12; i <= 14;i++){
+        for(j = 119; j < 168; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+
+    gotoprinttext(120,13,"NO.");
+    gotoprinttext(126,13,"ID ALAT");
+    gotoprinttext(136,13,"NAMA ALAT");
+    gotoprinttext(158,13,"STOK ALAT");
 }
 
 void tampilanTableTransaksiPembelianObat(){
@@ -634,7 +695,7 @@ void tampilanTableTransaksiPembelianObat(){
     /*border sudut bawah kanan*/
     gotoprintchar(167,38,206);
 
-    SetColorBlock(7,1);
+    SetColorBlock(15,4);
     for(i = 13; i <= 15;i++){
         for(j = 37; j < 167; j++){
             gotoprintchar(j,i,32);
@@ -643,8 +704,9 @@ void tampilanTableTransaksiPembelianObat(){
     gotoprinttext(38,14,"NO.");
     gotoprinttext(43,14,"ID TRANSAKSI");
     gotoprinttext(60,14,"TGL PEMBELIAN");
-    gotoprinttext(80,14,"NAMA KASIR");
+    gotoprinttext(80,14,"NAMA OWNER");
     gotoprinttext(120,14,"TOTAL HARGA");
+    gotoprinttext(140,14,"STATUS");
 }
 
 void tampilanDetailTableTransaksiPembelianObat(){
@@ -677,7 +739,7 @@ void tampilanDetailTableTransaksiPembelianObat(){
     /*border sudut bawah kanan*/
     gotoprintchar(167,38,206);
 
-    SetColorBlock(7,1);
+    SetColorBlock(15,4);
     for(i = 13; i <= 15;i++){
         for(j = 37; j < 167; j++){
             gotoprintchar(j,i,32);
@@ -690,4 +752,18 @@ void tampilanDetailTableTransaksiPembelianObat(){
         gotoprinttext(100,14,"HARGA OBAT");
         gotoprinttext(114,14,"QUANTITY");
         gotoprinttext(122,14,"SUB TOTAL");
+}
+
+void menuTransaksi(){
+    DrawFile(70,18,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(73,24,"T R A N S A K S I  M A K A N A N");
+    gotoprinttext(70,27,"T R A N S A K S I  M E R C H A N D I S E");
+    gotoprinttext(80,30,"  K E M B A L I");
+}
+
+void menuTransaksiFilm(){
+    DrawFile(70,19,"../Desaintxt/Dashboard/menuData.txt");
+    gotoprinttext(81,25,"L I H A T  D A T A");
+    gotoprinttext(74,28,"T A M B A H  T R A N S A K S I");
+    gotoprinttext(83,31," K E M B A L I");
 }

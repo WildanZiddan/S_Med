@@ -1,9 +1,16 @@
 void TambahDetailPembelianObat();
+void TambahDetailPembelianAlat();
+void obat();
+void alat();
+void pilihan();
+void tambah();
 void BayarPO();
+void readCreateSupplierinTransaksi();
+
+
 void dataPembelianObatTransaksi(){
     gotoxy(120, y);
     printf("%d", i);
-    if (id == obt.id_Obat)
     gotoxy(126, y);
     generateid("OBT",obt.id_Obat);
     gotoxy(136, y);
@@ -12,11 +19,22 @@ void dataPembelianObatTransaksi(){
     printf("%d",obt.jumlahObat);
 }
 
-void lihatMakanan(){
+void dataPembelianAlatTransaksi(){
+    gotoxy(120, y);
+    printf("%d", i);
+    gotoxy(126, y);
+    generateid("ALT",alt.id_Alat);
+    gotoxy(136, y);
+    printf("%s\n", alt.nama_Alat);
+    gotoxy(161, y);
+    printf("%d",alt.jumlahAlat);
+}
+
+void lihatObat(){
     tampilanTransaksiPembelianObat();
     i = 1;
     y = 15;
-    arspobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat", "rb+");
+    arspobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/obat.dat", "rb+");
     while (fread(&obt, sizeof(obt), 1, arspobat) == 1 ) {
         if(obt.jumlahObat > 0) {
             if (i % 2 == 0) {
@@ -45,14 +63,49 @@ void lihatMakanan(){
     }
     fclose(arspobat);
 }
+
+void lihatAlat(){
+    tampilanTransaksiPembelianAlat();
+    i = 1;
+    y = 15;
+    arspalat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/alatkesehatan.dat", "rb+");
+    while (fread(&alt, sizeof(alt), 1, arspalat) == 1 ) {
+        if(alt.jumlahAlat > 0) {
+            if (i % 2 == 0) {
+                SetColorBlock(15,4);
+                for(x = y; x <= y;x++){
+                    for(j = 119; j < 168; j++){
+                        gotoprintchar(j,x,32);
+                    }
+                }
+                dataPembelianAlatTransaksi();
+
+
+            } else {
+                SetColorBlock(15,12);
+                for(x = y; x <= y;x++){
+                    for(j = 119; j < 168; j++){
+                        gotoprintchar(j,x,32);
+                    }
+                }
+                dataPembelianAlatTransaksi();
+            }
+            batasTable();
+            i++;
+            y++;
+        }
+    }
+    fclose(arspalat);
+}
+
 void TambahTPembelianObat() {
     found = 0;
     i = 0;
     total = 0;
-    arskrj = fopen ("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/keranjang.dat", "wb");
+    arskrj = fopen ("../TRANSAKSI APOTEK/../Source/../Database/Dat/keranjang.dat", "wb");
     fclose(arskrj);
     trsbo.total_harga = 0;
-    arspbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/TransaksiObat.dat", "ab+");
+    arspbeliobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/transaksibeli.dat", "ab+");
     fread(&trsbo,sizeof(trsbo),1,arspbeliobat);
     while(!feof(arspbeliobat)){
         fread(&trsbo,sizeof(trsbo),1,arspbeliobat);
@@ -65,10 +118,41 @@ void TambahTPembelianObat() {
         trsbo.id_transaksi = id+1;
     }
     SetColorBlock(15,12);
-    gotoxy(40, 17);
+    gotoxy(40, 13);
     printf("I D  T R A N S A K S I     :");
-    gotoxy(59, 17);
+    gotoxy(70, 13);
     generateid("TRSBO",trsbo.id_transaksi);
+    do{
+        fflush(stdin);
+        showCursor();
+        BlankDesain();
+        readCreateSupplierinTransaksi();
+        gotoxy(40, 19);
+        SetColorBlock(15,12);
+        printf("I D  S U P P L I E R       :  SUP");
+        gotoxy(73, 19);
+        getnum(&trsbo.id_Supplier,3);
+        found = 0;
+        if(trsbo.id_Supplier == 0){
+            fclose(arspsupplier);
+            BlankDashboard();
+            menuOpsiDashboardOwner();
+        }
+        arspsupplier = fopen("../CRUD MASTER/../Source/../Database/Dat/supplier.dat","rb");
+        while(fread(&sp,sizeof (sp),1,arspsupplier)==1){
+            if(trsbo.id_Supplier == sp.id_Supplier){
+                found = 1;
+                trsbo.id_Supplier = sp.id_Supplier;
+            }
+        }
+        if (found == 0){
+            MessageBox(NULL,"Maaf ID Supplier Tidak Tersedia","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+            clearArea(70,19,10,1);
+        }
+        BlankDesain();
+        hideCursor();
+    }while(found == 0);
+    BlankTeks();
     fclose(arspbeliobat);
     TambahDetailPembelianObat();
 }
@@ -78,78 +162,215 @@ void TambahDetailPembelianObat(){
     found = 0;
     SetColorBlock(15,12);
     dtbo.id_transaksi = trsbo.id_transaksi;
-    gotoxy(40,17);
+    gotoxy(40,13);
     printf("I D  T R A N S A K S I     :");
-    gotoxy(70,17);
+    gotoxy(70,13);
     generateid("TRSBO",dtbo.id_transaksi);
-    gotoxy(40, 19);
+
+    gotoxy(40, 15);
     printf("T G L  P E M B E L I A N   :");
-    gotoxy(69, 19);
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-    trsbo.tgl_pembelian.hari = tm.tm_mday;
-    trsbo.tgl_pembelian.bulan = tm.tm_mon + 1;
-    trsbo.tgl_pembelian.tahun = tm.tm_year + 1900;
-    printf("%02d/%02d/%04d",trsbo.tgl_pembelian.hari,trsbo.tgl_pembelian.bulan,trsbo.tgl_pembelian.tahun);
-    lihatMakanan();
+    gotoprinttext(69, 15, "  /  /     \n");
+    do {
+        gotoxy(69, 15);
+        getnum(&trsbo.tgl_pembelian.hari,2);
+        if(trsbo.tgl_pembelian.hari > 31 || trsbo.tgl_pembelian.hari < 1 ){
+            MessageBox(NULL,"Jangka Inputan hari 1 - 31","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+            clearArea(69,15,2,1);
+        }
+    }
+    while(trsbo.tgl_pembelian.hari > 31 || trsbo.tgl_pembelian.hari < 1 );
+    do {
+        gotoxy(72, 15);
+        getnum(&trsbo.tgl_pembelian.bulan,2);
+        if(trsbo.tgl_pembelian.bulan > 12 || trsbo.tgl_pembelian.bulan < 1 ){
+            MessageBox(NULL,"Jangka Inputan bulan 1 - 12","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+            clearArea(72,15,2,1);
+        }
+    }while(trsbo.tgl_pembelian.bulan > 12 || trsbo.tgl_pembelian.bulan < 1);
+    do {
+        gotoxy(75, 15);
+        getnum(&trsbo.tgl_pembelian.tahun, 4);
+        hideCursor();
+        if (trsbo.tgl_pembelian.tahun < 2025 || trsbo.tgl_pembelian.tahun > 2028) {
+            MessageBox(NULL, "Jangka Inputan tahun 2025 - 2028", "NOTIFICATION!",MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
+            clearArea(75, 15, 4, 1);
+        }
+    }while(trsbo.tgl_pembelian.tahun < 2025  || trsbo.tgl_pembelian.tahun > 2028);
+    gotoxy(40, 17);
+    printf("T G L  P E N E R I M A A N :");
+    gotoxy(40,19);
+    printf("I D  S U P P L I E R       :");
+    gotoxy(70,19);
+    printf("SUP%03d",trsbo.id_Supplier);
     SetColorBlock(15,12);
+    showCursor();
+        tambah();
+    }
+
+
+
+
+void BayarPO() {
+    char ans, uang[25];
+    SetColorBlock(15,12);
+    gotoxy(40, 31);
+    rupiah(trsbo.total_harga,inputrp);
+    printf("T O T A L  H A R G A       : %s",inputrp);
+
+    strcpy(trsbo.status, status[0]);
+    gotoxy(40, 33);
+    printf("S T A T U S                : %s", trsbo.status);
+
+    strcpy(trsbo.FName, k.FName);
+    gotoxy(40, 35);
+    printf("S T A F F                  : %s", trsbo.FName);
+
+    arspbeliobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/transaksibeli.dat", "ab");
+    fwrite(&trsbo, sizeof(trsbo), 1, arspbeliobat);
+    fclose(arspbeliobat);
+    remove("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/Keranjang.dat");
+
+    MessageBox(NULL, "Transaksi berhasil!", "NOTIFICATION", MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
+
+    do {
+        gotoxy(132, 35);
+        printf("Tambah transaksi lagi ? ");
+        SpecialKeyYesorNoDashboard(145, 37,10,4,15,&output);
+        switch (output) {
+            case 1:
+                clearTransaksi();
+                clearTableTransaksi();
+                TambahTPembelianObat(); //Ganti ke opsi juga
+                break;
+            case 2:
+                BlankDashboard();
+                menuOpsiDashboardOwner();
+                break;
+        }
+    } while (output == 1);
+
+}
+void createTransaksiObat(){
+    frameTransaksi(42, 12);
+    SetColorBlock(15,12);
+    TambahTPembelianObat();
+    fclose(arspbeliobat);
+}
+
+void obat() {
+    showCursor();
+    gotoxy(73,21);	printf("   ");
+    gotoxy(40,21);
+    printf("I D  O B A T               : OBT ");
+    gotoxy(72,21);
+    getnum(&dtbo.id_Obat,3);
+    hideCursor();
+    fflush(stdin);
+
+    arspobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/obat.dat","rb");
+    fread(&obt,sizeof(obt),1,arspobat);
+    found = 0;
+    while(!feof(arspobat) && !found){
+        if (dtbo.id_Obat == obt.id_Obat && obt.jumlahObat < 5){
+            strcpy(dtbo.nama,obt.nama_Obat);
+            dtbo.harga = obt.harga_Obat;
+            cekstok = obt.jumlahObat;
+            found = 1;
+        }else if(dtbo.id_Obat == obt.id_Obat && obt.jumlahObat > 3){
+            found = 2;
+        }
+        fread(&obt,sizeof(obt),1,arspobat);
+    }
+    fclose(arspobat);
+}
+
+void alat() {
+    showCursor();
+    gotoxy(73,21);	printf("   ");
+    gotoxy(40,21);
+    printf("I D  A L A T               : ALT ");
+    gotoxy(72,21);
+    getnum(&dtbo.id_Alat,3);
+    hideCursor();
+    fflush(stdin);
+
+    arspalat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/alatkesehatan.dat","rb");
+    fread(&alt,sizeof(alt),1,arspalat);
+    found = 0;
+    while(!feof(arspalat) && !found){
+        if (dtbo.id_Alat == alt.id_Alat && alt.jumlahAlat < 5){
+            strcpy(dtbo.nama,alt.nama_Alat);
+            dtbo.harga = alt.harga_Alat;
+            cekstok = alt.jumlahAlat;
+            found = 1;
+        }else if(dtbo.id_Alat == alt.id_Alat && alt.jumlahAlat > 3){
+            found = 2;
+        }
+        fread(&alt,sizeof(alt),1,arspalat);
+    }
+    fclose(arspalat);
+}
+
+void pilihan() {
+    gotoxy(73,21);	printf("   ");
+    gotoxy(40,21);
+    printf("P I L I H A N              :  ");
+    gotoxy(69,21);
+    scanf("%d", &trsbo.pilihan);
+    hideCursor();
+}
+
+void tambah(){
     gotoxy(40,23);
-    printf("N A M A  M A K A N A N     :");
+    printf("N A M A  B A R A N G       :");
     gotoxy(40,25);
-    printf("H A R G A  M A K A N A N   : ");
+    printf("H A R G A  B A R A N G     : ");
     gotoxy(40,27);
     printf("Q U A N T I T Y            : ");
     gotoxy(40,29);
     printf("S U B T O T A L            : ");
     gotoxy(40, 31);
     printf("T O T A L  H A R G A       : ");
-    gotoxy(40, 33);
-    printf("U A N G  T U N A I         : ");
-    gotoxy(40, 35);
-    printf("K E M B A L I A N          : ");
     showCursor();
-    gotoxy(71,21);	printf("   ");
-    gotoxy(40,21);
-    printf("I D  O B A T            : OBT");
-    gotoxy(71,21);
-    getnum(&dtbo.id_Obat,3);
-    hideCursor();
-    fflush(stdin);
-    // if (dtbo.id_Obat == 0){
-    //     BlankDashboard();
-    //     menuTransaksiMakananKasir();
-    // }
 
-    arspobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat","rb");
-    fread(&obt,sizeof(obt),1,arspobat);
-    found = 0;
-    while(!feof(arspobat) && !found){
-        if (dtbo.id_Obat == obt.id_Obat && obt.jumlahObat < 5){
-            strcpy(dtbo.nama_Obat,obt.nama_Obat);
-            dtbo.harga_Obat = obt.harga_Obat;
-            cekstok = obt.jumlahObat;
-            found = 1;
-        }else if(dtbo.id_Obat == obt.id_Obat && obt.jumlahObat >= 5){
-            found = 2;
+    pilihan();
+
+    if(trsbo.pilihan == 1) {
+        lihatObat();
+        obat();
+        while(found != 1) {
+            if (found == 0){
+                MessageBoxA(NULL,"ID Obat tidak ada!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
+                obat();
+            }
+            else if( found == 2){
+                MessageBoxA(NULL,"ID Obat Tersedia, stok masih cukup!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
+                obat();
+            }
         }
-        fread(&obt,sizeof(obt),1,arspobat);
     }
-    fclose(arspobat);
+    else if(trsbo.pilihan == 2) {
+        lihatAlat();
+        alat();
+        while(found != 1) {
+            if (found == 0){
+                MessageBoxA(NULL,"ID Alat tidak ada!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
+                alat();
+            }
+            else if( found == 2){
+                MessageBoxA(NULL,"ID Alat Tersedia, stok masih cukup!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
+                alat();
+            }
+        }
+    }
 
-    if (found == 0){
-        MessageBoxA(NULL,"ID Obat tidak ada!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
-        TambahDetailPembelianObat();
-    } else if( found == 2){
-        MessageBoxA(NULL,"ID Obat Tersedia, stok masih cukup!","ATTENTION",MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
-        TambahDetailPembelianObat();
-    }
 
     clearTableTransaksi();
     SetColorBlock(15,12);
     gotoxy(69,23);
-    printf("%s",dtbo.nama_Obat);
+    printf("%s",dtbo.nama);
     gotoxy(69,25);
-    rupiah(dtbo.harga_Obat,inputrp);
+    rupiah(dtbo.harga,inputrp);
     printf("%s",inputrp);
 
     do {
@@ -157,55 +378,72 @@ void TambahDetailPembelianObat(){
         showCursor();
         fflush(stdin);
         gotoxy(69,27);
-        getnum(&dtbo.jumlahObat,3);
+        getnum(&dtbo.jumlah,3);
         hideCursor();
+    } while (dtbo.jumlah < 5);
 
-        if(dtbo.jumlahObat <= 0){
-            clearTransaksi();
-            TambahDetailPembelianObat();
-        }
-    } while (dtbo.jumlahObat < 5);
-
-    dtbo.subtotal = dtbo.jumlahObat * dtbo.harga_Obat;
-    rupiah(dtbo.subtotal,uang);
+    dtbo.subtotal = dtbo.jumlah * dtbo.harga;
     gotoxy(40,29);
+    rupiah(dtbo.subtotal,uang);
     printf("S U B T O T A L            : %s\n", uang);
     showDetail();
     SetColorBlock(15,12);
     total = total + dtbo.subtotal;
-    gotoxy(120,17);	rupiah(total,uang); printf("Total Harga = %s", uang);
+    gotoxy(120,19);	rupiah(total,uang); printf("Total Harga = %s", uang);
 
-    strcpy(krj.nama,dtbo.nama_Obat);
-    krj.qty = dtbo.jumlahObat;
+    strcpy(krj.nama,dtbo.nama);
+    krj.qty = dtbo.jumlah;
 
     /* buka file untuk menambah data */
-    arsdetailbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/detailpembelianobat.dat","ab+");
+    arsdetailbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/detailpembelian.dat","ab+");
     fwrite(&dtbo,sizeof(dtbo),1,arsdetailbeliobat);
     fclose(arsdetailbeliobat);
 
-    /* proses pengurangan stok */
-    arspobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat","rb");
-    Temp  = fopen ("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/tempobat.dat","wb");
-    fread(&obt,sizeof(obt),1,arspobat);
-    while(!feof(arspobat)){
-        if(dtbo.id_Obat == obt.id_Obat){
-            obt.jumlahObat = obt.jumlahObat+dtbo.jumlahObat;
-            fwrite(&obt,sizeof(obt),1,Temp);
-        }else{
-            fwrite(&obt,sizeof(obt),1,Temp);
-        }
+    if(trsbo.pilihan == 1) {
+        arspobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/obat.dat","rb");
+        Temp  = fopen ("../TRANSAKSI APOTEK/../Source/../Database/Dat/tempobat.dat","wb");
         fread(&obt,sizeof(obt),1,arspobat);
+        while(!feof(arspobat)){
+            if(dtbo.id_Obat == obt.id_Obat){
+                obt.jumlahObat = obt.jumlahObat+dtbo.jumlah;
+                fwrite(&obt,sizeof(obt),1,Temp);
+            }else{
+                fwrite(&obt,sizeof(obt),1,Temp);
+            }
+            fread(&obt,sizeof(obt),1,arspobat);
+        }
+        fclose(arspobat);
+        fclose(Temp);
+
+        /* mengganti data makanan terbaru */
+        remove("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat");
+        rename("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/tempobat.dat","../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat");
+
     }
-    fclose(arspobat);
-    fclose(Temp);
+    else if(trsbo.pilihan == 2) {
+        arspalat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/alatkesehatan.dat","rb");
+        Temp  = fopen ("../TRANSAKSI APOTEK/../Source/../Database/Dat/tempalat.dat","wb");
+        fread(&alt,sizeof(alt),1,arspalat);
+        while(!feof(arspalat)){
+            if(dtbo.id_Alat == alt.id_Alat){
+                alt.jumlahAlat = alt.jumlahAlat+dtbo.jumlah;
+                fwrite(&alt,sizeof(alt),1,Temp);
+            }else{
+                fwrite(&alt,sizeof(alt),1,Temp);
+            }
+            fread(&alt,sizeof(alt),1,arspalat);
+        }
+        fclose(arspalat);
+        fclose(Temp);
 
-    /* mengganti data makanan terbaru */
-    remove("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat");
-    rename("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/tempobat.dat","../TRANSAKSI BIOSKOP/../Source/../Database/Dat/obat.dat");
+        /* mengganti data makanan terbaru */
+        remove("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/alatkesehatan.dat");
+        rename("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/tempalat.dat","../TRANSAKSI BIOSKOP/../Source/../Database/Dat/alatkesehatan.dat");
+    }
 
-    gotoxy(120,23); printf("Keranjang Obat");
 
-    arskrj = fopen ("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/Keranjang.dat", "ab");
+    gotoxy(120,23); printf("Keranjang Belanja");
+    arskrj = fopen ("../TRANSAKSI APOTEK/../Source/../Database/Dat/Keranjang.dat", "ab");
     fwrite(&krj,sizeof(krj),1,arskrj);
     fclose(arskrj);
 
@@ -230,87 +468,17 @@ void TambahDetailPembelianObat(){
     do {
         gotoxy(143,19); printf("   ");
         gotoxy(134,19); printf("Tambah item lagi?");
-        SpecialKeyYesorNoDashboard(145, 21,10,7,9,&output);
+        SpecialKeyYesorNoDashboard(145, 21,10,15,12,&output);
         switch(output){
             case 1 :
                 clearTableTransaksi();
                 clearTransaksi();
-                TambahDetailPembelianObat();
+            TambahDetailPembelianObat();
                 break;
             case 2 :
                 trsbo.total_harga = total;
                 BayarPO();
                 break;
         }
-    } while (output == 1);
-}
-
-void BayarPO() {
-    char ans, uang[25];
-    SetColorBlock(15,12);
-    gotoxy(40, 31);
-    rupiah(trsbo.total_harga,inputrp);
-    printf("T O T A L  H A R G A       : %s",inputrp);
-
-
-    gotoxy(72, 33);
-    printf("              ");
-    showCursor();
-    gotoxy(40, 33);
-    printf("U A N G  T U N A I         : Rp.");
-    fflush(stdin);
-    getRp(&tunai, 4, 9, 73, 33);
-    hideCursor();
-    while (tunai < trsbo.total_harga) { /* perulangan jika uang tunai kurang dari total */
-        MessageBox(NULL, "Uang yang anda input kurang", "NOTIFICATION!",
-                   MB_OK | MB_ICONINFORMATION | MB_DEFAULT_DESKTOP_ONLY);
-        gotoxy(72, 33);
-        printf("              ");
-        showCursor();
-        gotoxy(40, 33);
-        printf("U A N G  T U N A I         : Rp.");
-        fflush(stdin);
-        getRp(&tunai, 4, 9, 73, 33);
-        hideCursor();
-    }
-    kembali = tunai - trsbo.total_harga;
-
-    gotoxy(40, 35);
-    rupiah(kembali, uang);
-    printf("K E M B A L I A N          : %s", uang);
-
-    strcpy(trsbo.FName, k.FName);
-    gotoxy(40, 37);
-    printf("S T A F F                  : %s", trsbo.FName);
-
-    arspbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/transaksibeliobat.dat", "ab");
-    fwrite(&trsbo, sizeof(trsbo), 1, arspbeliobat);
-    fclose(arspbeliobat);
-    remove("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/Keranjang.dat");
-
-    MessageBox(NULL, "Transaksi berhasil!", "NOTIFICATION", MB_OK |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
-
-    do {
-        gotoxy(132, 35);
-        printf("Tambah transaksi lagi ? ");
-        SpecialKeyYesorNoDashboard(145, 37,10,7,9,&output);
-        switch (output) {
-            case 1:
-                clearTransaksi();
-                clearTableTransaksi();
-                TambahTPembelianObat();
-                break;
-            case 2:
-                BlankDashboard();
-                menuOpsiDashboardOwner();
-                break;
-        }
-    } while (output == 1);
-
-}
-void createTransaksiMakanan(){
-    frameTransaksi(42, 12, "../TRANSAKSI BIOSKOP/../Source/../Desaintxt/Dashboard/transaksiMakanan.txt");
-    SetColorBlock(15,12);
-    TambahTPembelianObat();
-    fclose(arspbeliobat);
+        } while (output == 1);
 }

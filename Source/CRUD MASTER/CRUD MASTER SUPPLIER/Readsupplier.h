@@ -145,3 +145,51 @@ void readUpdateDataSupplier() {
     }
     fclose(arspsupplier);
 }
+
+void readCreateSupplierinTransaksi(){
+    SetColorBlock(15,4);
+    for(i = 17; i <= 19;i++){
+        for(j = 130; j < 167; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+
+    gotoprinttext(131,18,"NO.");
+    gotoprinttext(134,18,"ID SUPPLIER");
+    gotoprinttext(147,18,"NAMA SUPPLIER");
+    i = 1;
+    y = 20;
+    arspsupplier = fopen("../CRUD MASTER/../Source/../Database/Dat/supplier.dat", "rb+");
+    while (fread(&sp, sizeof(sp), 1, arspsupplier) == 1 ) {
+        if (i % 2 == 0) {
+            SetColorBlock(15,4);
+            for(x = y; x <= y;x++){
+                for(j = 130; j < 167; j++){
+                    gotoprintchar(j,x,32);
+                }
+            }
+            gotoxy(131, y);
+            printf("%d", i);
+            gotoxy(134, y);
+            generateid("SUP",sp.id_Supplier);
+            gotoxy(147, y);
+            printf("%s\n", sp.nama_Supplier);
+        } else {
+            SetColorBlock(15,12);
+            for(x = y; x <= y;x++){
+                for(j = 130; j < 167; j++){
+                    gotoprintchar(j,x,32);
+                }
+            }
+            gotoxy(131, y);
+            printf("%d", i);
+            gotoxy(134, y);
+            generateid("SUP",sp.id_Supplier);
+            gotoxy(147, y);
+            printf("%s\n", sp.nama_Supplier);
+        }
+        i++;
+        y++;
+    }
+    fclose(arspsupplier);
+}

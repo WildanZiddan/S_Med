@@ -88,7 +88,7 @@
 //
 //
 #include "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/createTransaksiPembelianObat.h"
-// #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MAKANAN/readTransaksiMakanan.h"
+#include "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/readTransaksiPembelian.h"
 //
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MERCHANDISE/createTransaksiMerchandise.h"
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MERCHANDISE/readTransaksiMerchandise.h"
@@ -107,6 +107,6 @@ int main() {
     disableScrollBar();
     fullscreen();
     system("color fc");
-    // tampilanAwal();
+    //tampilanAwal();
     DashboardOwner();
 }

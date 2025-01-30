@@ -336,7 +336,7 @@ void login() {
             // playCustomSound(audioFile);
             SetColorBlock(4, 15);
             desainAtas();
-            // DrawFile(32, 14, "../Desaintxt/Booting/bootManajer.txt");
+            DrawFile(32, 14, "../Desaintxt/Booting/bootOwner.txt");
             desainBawah();
             loadingMasuk(55, 33);
             Beep(5000, 500);
