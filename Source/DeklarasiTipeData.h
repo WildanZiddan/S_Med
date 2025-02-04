@@ -182,7 +182,7 @@ typedef struct{
 detailTjualobat dtjo;
 FILE *arsdetailobat;
 
-//================================
+//TRANSAKSI PEMBELIAN BARANG
 typedef struct tBeliObat{
     int id_transaksi;
     int id_Supplier;
@@ -203,7 +203,7 @@ struct tBeliObat temptrsbo;
 struct tBeliObat trsbo;
 FILE *arspbeliobat;
 
-//DETAIL TRANSAKSI PENJUALAN OBAT
+//DETAIL TRANSAKSI PEMBELIAN BARANG
 typedef struct detailTbeliobat{
     int id_transaksi;
     int id_Obat;
@@ -217,33 +217,19 @@ typedef struct detailTbeliobat{
 struct detailTbeliobat dtbo;
 FILE *arsdetailbeliobat;
 
-/* ==================== TABLE TRANSAKSI PENJUALAN ALAT ==================== */
-typedef struct tBeliAlat{
+
+typedef struct tPenerimaan {
     int id_transaksi;
-    int id_Supplier;
+    int id_transaksiBeli;
+    char FName[100];
     struct date tgl_pembelian;
-    int id_Alat;
-    int idStaff;
-    char nama_Staff[100];
-    float sub_total;
-    float total_harga;
+    struct date tgl_penerimaan;
     char status[100];
 };
-struct tBeliAlat temptrsba;
-struct tBeliAlat trsba;
-FILE *arspbelialat;
+struct tPenerimaan trspo;
+FILE *arsppenerimaan;
 
-//DETAIL TRANSAKSI PENJUALAN ALAT
-typedef struct detailTbelialat{
-    int id_transaksi;
-    int id_Alat;
-    char nama_Alat[100];
-    float harga_Obat;
-    int jumlahObat;
-    float subtotal;
-};
-struct detailTbelialat dtba;
-FILE *arsdetailalat;
+
 
 /* ==================== TABLE KERANJANG ==================== */
 typedef struct keranjang{

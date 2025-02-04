@@ -8,7 +8,7 @@ void menuDashboardOwner(){
     gotoprinttext(11,21,"S U P P L I E R");
     gotoprinttext(15,25,"D A T A");
     gotoprinttext(10,26,"P E M B E L I A N");\
-    gotoprinttext(10,30,"A K T I F I T A S");
+    gotoprinttext(10,30,"A K T I V I T A S");
     gotoprinttext(13,31,"B I S N I S");
     gotoprinttext(13,39,"K E L U A R");
 }
@@ -704,12 +704,52 @@ void tampilanTableTransaksiPembelianObat(){
     gotoprinttext(38,14,"NO.");
     gotoprinttext(43,14,"ID TRANSAKSI");
     gotoprinttext(60,14,"TGL PEMBELIAN");
-    gotoprinttext(80,14,"NAMA OWNER");
-    gotoprinttext(120,14,"TOTAL HARGA");
-    gotoprinttext(140,14,"STATUS");
+    gotoprinttext(75,14,"NAMA OWNER");
+    gotoprinttext(100,14,"SUPPLIER");
+    gotoprinttext(125,14,"TOTAL HARGA");
+    gotoprinttext(144,14,"STATUS");
 }
 
-void tampilanDetailTableTransaksiPembelianObat(){
+void tampilanTransaksiPembelianBarang(){
+    SetColorBlock(4,15);
+    /*border atas*/
+    for(j = 119; j <= 167; j++){
+        gotoprintchar(j,11,205);
+    }
+    /*border sudut kiri atas*/
+    gotoprintchar(118,11,201);
+    /*border sudut kanan atas*/
+    gotoprintchar(168,11,187);
+    /*border vertikal kebawah kiri*/
+    for(i = 12; i <= 38;i++){
+        gotoprintchar(118,i,186);
+    }
+    /*border vertikal kebawah kanan*/
+    for(i = 12; i <= 38;i++){
+        gotoprintchar(168,i,186);
+    }
+    /*border sudut bawah kiri*/
+    gotoprintchar(118,39,200);
+    for(j = 119; j <= 167; j++){
+        gotoprintchar(j,39,205);
+    }
+
+    /*border sudut bawah kanan*/
+    gotoprintchar(168,39,188);
+
+    SetColorBlock(15,4);
+    for(i = 12; i <= 14;i++){
+        for(j = 119; j < 168; j++){
+            gotoprintchar(j,i,32);
+        }
+    }
+
+    gotoprinttext(120,13,"NO.");
+    gotoprinttext(126,13,"ID TRANSAKSI");
+    gotoprinttext(136,13,"STATUS");
+}
+
+void tampilanDetailTableTransaksiPembelian(){
     SetColorBlock(4,15);
     /*border atas*/
     for(i = 12; i <= 12;i++){
@@ -747,11 +787,11 @@ void tampilanDetailTableTransaksiPembelianObat(){
     }
     gotoprinttext(38,14,"NO.");
     gotoprinttext(43,14,"ID TRANSAKSI");
-        gotoprinttext(57,14,"ID OBAT");
-        gotoprinttext(66,14,"NAMA OBAT");
-        gotoprinttext(100,14,"HARGA OBAT");
-        gotoprinttext(114,14,"QUANTITY");
-        gotoprinttext(122,14,"SUB TOTAL");
+    gotoprinttext(57,14,"ID BARANG");
+    gotoprinttext(73,14,"NAMA BARANG");
+    gotoprinttext(100,14,"HARGA BARANG");
+    gotoprinttext(123,14,"JUMLAH");
+    gotoprinttext(140,14,"SUB TOTAL");
 }
 
 void menuTransaksi(){

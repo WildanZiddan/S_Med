@@ -242,10 +242,10 @@ void DashboardOwner();
 
 void exitLayout(){
     BorderScreen();
-    DrawFile(50,4,"../Desaintxt/thankYou.txt");
-    DrawFile(10,4,"../Desaintxt/elemen/love.txt");
-    DrawFile(115,8,"../Desaintxt/elemen/popcorn.txt");
-    DrawFile(10,22,"../Desaintxt/elemen/balon.txt");
+    // DrawFile(50,4,"../Desaintxt/thankYou.txt");
+    // DrawFile(10,4,"../Desaintxt/elemen/love.txt");
+    // DrawFile(115,8,"../Desaintxt/elemen/popcorn.txt");
+    // DrawFile(10,22,"../Desaintxt/elemen/balon.txt");
     audioFile = "../Sound/Thankyou.wav";
     playCustomSound(audioFile);
     SetColorBlock(4,15);
@@ -305,7 +305,7 @@ void login() {
             SetColorBlock(4, 15);
             desainAtas();
             DrawFile(32, 14, "../Desaintxt/Booting/bootOwner.txt");
-            desainBawah();
+            desainBawah();  
             loadingMasuk(55, 33);
             Beep(5000, 500);
             clearArea(72, 34, 20, 1);

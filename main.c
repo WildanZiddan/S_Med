@@ -85,18 +85,17 @@
 // #include "Source/CRUD MASTER/CRUD MASTER TIKET/ReadTiket.h"
 // #include "Source/CRUD MASTER/CRUD MASTER TIKET/UpdateTiket.h"
 // #include "Source/CRUD MASTER/CRUD MASTER TIKET/DeleteTiket.h"
-//
-//
+
 #include "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/createTransaksiPembelianObat.h"
 #include "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/readTransaksiPembelian.h"
-//
-// #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MERCHANDISE/createTransaksiMerchandise.h"
+
+#include "Source/TRANSAKSI APOTEK/TRANSAKSI PENERIMAAN/createTransaksiPenerimaan.h"
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI MERCHANDISE/readTransaksiMerchandise.h"
 //
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI TIKET/createTransaksiTiket.h"
 // #include "Source/TRANSAKSI BIOSKOP/TRANSAKSI TIKET/readTransaksiTiket.h"
-//
-// #include "Source/LAPORAN BIOSKOP/LAPORAN KEUANGAN/LaporanKeuanganMakanan.h"
+
+#include "Source/LAPORAN APOTEK/laporanPembelian.h"
 // #include "Source/LAPORAN BIOSKOP/LAPORAN KEUANGAN/LaporanKeuanganMerchandise.h"
 // #include "Source/LAPORAN BIOSKOP/LAPORAN KEUANGAN/LaporanKeuanganTiket.h"
 //
@@ -107,6 +106,6 @@ int main() {
     disableScrollBar();
     fullscreen();
     system("color fc");
-    //tampilanAwal();
-    DashboardOwner();
+    tampilanAwal();
+    //DashboardOwner();
 }

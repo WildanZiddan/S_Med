@@ -40,6 +40,11 @@ void createTransaksiObat();
 void TambahTPembelianObat();
 void TambahDetailPembelianObat();
 
+void readAllDataTransaksiPembelian();
+void lihatDetailTransaksiPembelianOwner();
+
+void createTransaksiPenerimaan();
+
 void profileOwner(){
     arspstaff = fopen("../Source/../Database/Dat/staff.dat","rb");
     while (fread(&k, sizeof(k), 1, arspstaff) == 1 ) {
@@ -116,7 +121,8 @@ void dataStaffMenu(){
         break;
         case 5 :
             BlankDashboard();
-            clearArea(5,24,28,4);
+            clearArea(5,14,28,4);
+        profileOwner();
             menuOpsiDashboardOwner();
         break;
     }
@@ -154,8 +160,9 @@ void dataSupplierMenu(){
         break;
         case 5 :
             BlankDashboard();
-            clearArea(5,24,28,4);
-            menuOpsiDashboardOwner();
+        clearArea(5,19,28,4);
+        profileOwner();
+        menuOpsiDashboardOwner();
         break;
     }
 }
@@ -193,6 +200,7 @@ void dataAlatMenu(){
         case 5 :
             BlankDashboard();
         clearArea(5,24,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }
@@ -232,6 +240,7 @@ void dataObatMenu(){
             BlankDashboard();
             clearArea(5,24,28,4);
             menuOpsiDashboardOwner();
+        profileOwner();
         break;
     }
 }
@@ -289,6 +298,7 @@ void dataJenisObatMenu(){
             BlankDashboard();
             clearArea(5,24,28,4);
             menuOpsiDashboardOwner();
+        profileOwner();
         break;
     }
 }
@@ -318,6 +328,7 @@ void dataDaftarObatMenu(){
         case 3 :
             BlankDashboard();
         clearArea(5,24,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }
@@ -425,6 +436,7 @@ void dataPenjualanMenu(){
         case 3 :
             BlankDashboard();
         clearArea(5,24,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }
@@ -446,19 +458,19 @@ void dataTransaksiPembelianMenu(){
     switch (output) {
         case 1 :
            BlankDashboard();
-        // readAllDataTransaksiMerchandise();
-        // SpecialKeyCariorBackDashboard(150, 40,10,12,15,&output);
-        // switch (output) {
-        //     case 1 :
-        //         SetColorBlock(1,7);
-        //     lihatDetailTransaksiMerchandiseKasir();
-        //     break;
-        //     case 2:
-        //         BlankDashboard();
-        //     transaksiMerchandiseMenuKasir();
-        //     break;
-        // }
-        // break;
+        readAllDataTransaksiPembelian();
+        SpecialKeyCariorBackDashboard(150, 40,10,12,15,&output);
+        switch (output) {
+            case 1 :
+                SetColorBlock(4,15);
+            lihatDetailTransaksiPembelianOwner();
+            break;
+            case 2:
+                BlankDashboard();
+            dataTransaksiPembelianMenu();
+            break;
+        }
+        break;
         case 2 :
             BlankDashboard();
         createTransaksiObat();
@@ -466,6 +478,49 @@ void dataTransaksiPembelianMenu(){
         case 3 :
             BlankDashboard();
         clearArea(5,29,28,4);
+        profileOwner();
+        menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataTransaksiPenerimaanMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(15,12);
+    SpecialkeyDashboardMenuDataTransaksiPembelian(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+        readAllDataTransaksiPembelian();
+        SpecialKeyCariorBackDashboard(150, 40,10,12,15,&output);
+        switch (output) {
+            case 1 :
+                SetColorBlock(4,15);
+            lihatDetailTransaksiPembelianOwner();
+            break;
+            case 2:
+                BlankDashboard();
+            dataTransaksiPembelianMenu();
+            break;
+        }
+        break;
+        case 2 :
+            BlankDashboard();
+        createTransaksiPenerimaan();
+        break;
+        case 3 :
+            BlankDashboard();
+        clearArea(5,29,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }
@@ -491,11 +546,43 @@ void dataTransaksiMenu(){
         break;
         case 2 :
             BlankDashboard();
+        dataTransaksiPenerimaanMenu();
+        break;
+        case 3 :
+            BlankDashboard();
+        clearArea(5,29,28,4);
+        profileOwner();
+        menuOpsiDashboardOwner();
+        break;
+    }
+}
+
+void dataLaporanMenu(){
+    SetColorBlock(4,15);
+    //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
+    DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,40,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,40,220);
+    frameLayout(60,40,120,41,223);
+    frameLayout(119,18,120,40,220);
+    SetColorBlock(15,12);
+    SpecialkeyDashboardMenuDataTransaksi(79,24,20,3,&output);
+    switch (output) {
+        case 1 :
+            BlankDashboard();
+        dataTransaksiPembelianMenu();
+        break;
+        case 2 :
+            BlankDashboard();
         //dataAlatMenu();
         break;
         case 3 :
             BlankDashboard();
-        clearArea(5,24,28,4);
+        clearArea(5,29,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }
@@ -521,11 +608,12 @@ void dataDaftarAktifitasMenu(){
         break;
         case 2 :
             BlankDashboard();
-        //dataJenisObatMenu();
+            dataLaporanMenu();
         break;
         case 3 :
             BlankDashboard();
-        clearArea(5,24,28,4);
+        clearArea(5,29,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
         break;
     }

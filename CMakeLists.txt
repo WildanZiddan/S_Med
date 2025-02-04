@@ -28,5 +28,8 @@ add_executable(S_Med main.c
         "Source/CRUD MASTER/CRUD MASTER OBAT/Readobat.h"
         "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/createTransaksiPembelianObat.h"
         "Source/TRANSAKSI APOTEK/TRANSAKSI PEMBELIAN/readTransaksiPembelian.h"
+        "Source/TRANSAKSI APOTEK/TRANSAKSI PENERIMAAN/createTransaksiPenerimaan.h"
+        "Source/LAPORAN APOTEK/laporanPembelian.h"
+        "Source/TRANSAKSI APOTEK/TRANSAKSI PENERIMAAN/readTransaksiPenerimaan.h"
 )
 target_link_libraries(S_Med winmm)

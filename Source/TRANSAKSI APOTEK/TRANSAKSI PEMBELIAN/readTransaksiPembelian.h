@@ -5,11 +5,15 @@
     generateid("TRSBO",trsbo.id_transaksi);
     gotoxy(60, y);
     printf("%02d/%02d/%04d\n", trsbo.tgl_pembelian.hari,trsbo.tgl_pembelian.bulan,trsbo.tgl_pembelian.tahun);
-    gotoxy(80, y);
+    gotoxy(75, y);
     printf("%s\n", trsbo.FName);
-    gotoxy(120, y);
+        gotoxy(100, y);
+        printf("SUP%03d\n", trsbo.id_Supplier);
+    gotoxy(125, y);
     rupiah(trsbo.total_harga,inputrp);
     printf("%s",inputrp);
+        gotoxy(144, y);
+        printf("%s",trsbo.status);
 }
 
 void dataDetailTransaksiPembelian(){
@@ -35,7 +39,6 @@ void dataDetailTransaksiPembelian(){
     gotoxy(140, y);
     rupiah(dtbo.subtotal,inputrp);
     printf("%s",inputrp);
-
 }
 
 void readAllDataTransaksiPembelian(){
@@ -44,7 +47,7 @@ void readAllDataTransaksiPembelian(){
     tampilanTableTransaksiPembelianObat();
     i = 1;
     y = 16;
-    arspbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/transaksibeli.dat", "rb+");
+    arspbeliobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/transaksibeli.dat", "rb+");
     while (fread(&trsbo, sizeof(trsbo), 1, arspbeliobat) == 1 ) {
         if (i % 2 == 0) {
             SetColorBlock(15,4);
@@ -55,7 +58,7 @@ void readAllDataTransaksiPembelian(){
             }
             dataTransaksiPembelian();
         } else {
-            SetColorBlock(7,9);
+            SetColorBlock(15,12);
             for(x = y; x <= y;x++){
                 for(j = 37; j < 167; j++){
                     gotoprintchar(j,x,32);
@@ -78,7 +81,7 @@ void lihatDetailTransaksiPembelianOwner(){
     showCursor();
     getnum(&temptrsbo.id_transaksi, 3);
     hideCursor();
-    arsdetailbeliobat = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/detailpembelian.dat", "rb+");
+    arsdetailbeliobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/detailpembelian.dat", "rb+");
     fread(&dtbo,sizeof(dtbo),1,arsdetailbeliobat);
     found = 0;
     while(!feof(arsdetailbeliobat) && found==0){
@@ -93,11 +96,11 @@ void lihatDetailTransaksiPembelianOwner(){
         cancel = MessageBoxA(NULL,"ID Transaksi Tidak ada!, Anda ingin mencari lagi?","ATTENTION",MB_OKCANCEL |MB_ICONINFORMATION| MB_DEFAULT_DESKTOP_ONLY);
         if(cancel == IDOK) {
             BlankDashboard();
-            readAllDataTransaksiMerchandise();
-            lihatDetailTransaksiMerchandiseKasir();
+            readAllDataTransaksiPembelian();
+            lihatDetailTransaksiPembelianOwner();
         } else if (cancel == IDCANCEL){
             BlankDashboard();
-            transaksiMerchandiseMenuKasir();
+            dataTransaksiPembelianMenu();
         }
     }
 
@@ -105,56 +108,98 @@ void lihatDetailTransaksiPembelianOwner(){
         a = 1;
         y = 16;
         BlankDashboard();
-        tampilanDetailTableTransaksiMerchandise();
+        tampilanDetailTableTransaksiPembelian();
         /* buka file untuk dibaca */
-        arsdetail = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/DetailMerchandise.dat", "rb");
-        fread(&dtmc, sizeof(dtmc), 1, arsdetail);
-        while (fread(&dtmc, sizeof(dtmc), 1, arsdetail) == 1) {
-            if (temptrsmc.id_transaksi == dtmc.id_transaksi) { /* munculkan data yang id nya sesuai saja */
+        arsdetailbeliobat = fopen("../TRANSAKSI APOTEK/../Source/../Database/Dat/detailpembelian.dat", "rb");
+        fread(&dtbo, sizeof(dtbo), 1, arsdetailbeliobat);
+        while (fread(&dtbo, sizeof(dtbo), 1, arsdetailbeliobat) == 1) {
+            if (temptrsbo.id_transaksi == dtbo.id_transaksi) { /* munculkan data yang id nya sesuai saja */
                 if (a % 2 == 0) {
-                    SetColorBlock(7, 1);
+                    SetColorBlock(15, 4);
                     for (x = y; x <= y; x++) {
                         for (j = 37; j < 167; j++) {
                             gotoprintchar(j, x, 32);
                         }
                     }
-                    dataDetailTransaksiMerchandise();
+                    dataDetailTransaksiPembelian();
                 } else {
-                    SetColorBlock(7, 9);
+                    SetColorBlock(15, 12);
                     for (x = y; x <= y; x++) {
                         for (j = 37; j < 167; j++) {
                             gotoprintchar(j, x, 32);
                         }
                     }
-                    dataDetailTransaksiMerchandise();
+                    dataDetailTransaksiPembelian();
                 }
                 batasTable();
                 a++;
                 y++;
             }
         }
-        fclose(arsdetail);
+        fclose(arsdetailbeliobat);
     }
-    SpecialKeyCariorBackDashboard(150, 40,10,9,7,&output);
+    SpecialKeyCariorBackDashboard(150, 40,10,12,15,&output);
     switch (output) {
         case 1 :
-            SetColorBlock(1,7);
-            readAllDataTransaksiMerchandise();
-            lihatDetailTransaksiMerchandiseKasir();
+            SetColorBlock(4,15);
+            readAllDataTransaksiPembelian();
+            lihatDetailTransaksiPembelianOwner();
             break;
 
         case 2:
             BlankDashboard();
-            transaksiMerchandiseMenuKasir();
+            dataTransaksiPembelianMenu();
             break;
     }
 
 }
 
+void readCreateTransaksiinPenjadwalan(){
+        SetColorBlock(15,4);
+        for(i = 17; i <= 19;i++){
+            for(j = 130; j < 167; j++){
+                gotoprintchar(j,i,32);
+            }
+        }
 
-void lihatDetailTransaksiMerchandiseAdmin(){
+        gotoprinttext(131,18,"NO.");
+        gotoprinttext(134,18,"ID TRANSAKSI");
+        i = 1;
+        y = 20;
+        arspbeliobat = fopen("../CRUD MASTER/../Source/../Database/Dat/transaksibeli.dat", "rb+");
+        while (fread(&trsbo, sizeof(trsbo), 1, arspbeliobat) == 1 ) {
+            if (i % 2 == 0) {
+                SetColorBlock(15,4);
+                for(x = y; x <= y;x++){
+                    for(j = 130; j < 167; j++){
+                        gotoprintchar(j,x,32);
+                    }
+                }
+                gotoxy(131, y);
+                printf("%d", i);
+                gotoxy(134, y);
+                generateid("TRSBO",trsbo.id_transaksi);
+            } else {
+                SetColorBlock(15,12);
+                for(x = y; x <= y;x++){
+                    for(j = 130; j < 167; j++){
+                        gotoprintchar(j,x,32);
+                    }
+                }
+                gotoxy(131, y);
+                printf("%d", i);
+                gotoxy(134, y);
+                generateid("TRSBO",trsbo.id_transaksi);
+            }
+            i++;
+            y++;
+        }
+        fclose(arspbeliobat);
+    }
+/*
+void lihatDetailTransaksiPembelianAdmin(){
     boxSearch();
-    gotoprinttext(138,10,"CARI   : TRSMC");
+    gotoprinttext(138,10,"CARI   : TRSBO");
     gotoprinttext(152, 10, "       ");
     gotoxy(152, 10);
     showCursor();
@@ -164,7 +209,7 @@ void lihatDetailTransaksiMerchandiseAdmin(){
     fread(&dtmc,sizeof(dtmc),1,arsdetail);
     found = 0;
     while(!feof(arsdetail) && found==0){
-        if (temptrsmc.id_transaksi == dtmc.id_transaksi){ /* mengecek apakah id yang dicari ada dalam id transaksi */
+        if (temptrsmc.id_transaksi == dtmc.id_transaksi){ /* mengecek apakah id yang dicari ada dalam id transaksi #1#
             found = 1;
         }else {
             fread(&dtmc, sizeof(dtmc), 1, arsdetail);
@@ -188,11 +233,11 @@ void lihatDetailTransaksiMerchandiseAdmin(){
         y = 16;
         BlankDashboard();
         tampilanDetailTableTransaksiMerchandise();
-        /* buka file untuk dibaca */
+        /* buka file untuk dibaca #1#
         arsdetail = fopen("../TRANSAKSI BIOSKOP/../Source/../Database/Dat/DetailMerchandise.dat", "rb");
         fread(&dtmc, sizeof(dtmc), 1, arsdetail);
         while (fread(&dtmc, sizeof(dtmc), 1, arsdetail) == 1) {
-            if (temptrsmc.id_transaksi == dtmc.id_transaksi) { /* munculkan data yang id nya sesuai saja */
+            if (temptrsmc.id_transaksi == dtmc.id_transaksi) { /* munculkan data yang id nya sesuai saja #1#
                 if (a % 2 == 0) {
                     SetColorBlock(7, 1);
                     for (x = y; x <= y; x++) {
@@ -232,3 +277,4 @@ void lihatDetailTransaksiMerchandiseAdmin(){
     }
 
 }
+*/
