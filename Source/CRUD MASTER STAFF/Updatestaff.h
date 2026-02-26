@@ -15,7 +15,7 @@ void updateDataOwner(){
         ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
         found = 0;
         while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-            if (k.idStaff == id && strcmp(k.role,"Owner")==0 || strcmp(k.role,"Kasir")==0 || strcmp(k.role,"Apoteker")==0) {
+            if (k.idStaff == id) {
                 MessageBox(NULL,"ID Staff Ditemukan","NOTIFICATION!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
                 found = 1;
             }

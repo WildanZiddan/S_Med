@@ -742,7 +742,7 @@ void moreTable(int a){
 
 void BlankDesain(){
     SetColorBlock(15,15);
-    for(i = 16; i < 34; i++){
+    for(i = 16; i < 40; i++){
         for(j = 130; j < 167; j++){
             gotoprintchar(j,i,32);
         }
@@ -900,7 +900,7 @@ void BlankDashboard(){
 void clearTransaksi(){
     SetColorBlock(12,12);
     for(i = 23; i < 38; i++){
-        for(j = 69; j < 110; j++){
+        for(j = 40; j < 110; j++){
             gotoprintchar(j,i,32);
         }
     }

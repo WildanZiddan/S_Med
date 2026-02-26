@@ -153,20 +153,8 @@ void TambahTPembelianObat() {
         hideCursor();
     }while(found == 0);
         BlankTeks();
-        fclose(arspbeliobat);
-    TambahDetailPembelianObat();
-}
 
-void TambahDetailPembelianObat(){
-    FILE *Temp;
-    found = 0;
     SetColorBlock(15,12);
-    dtbo.id_transaksi = trsbo.id_transaksi;
-    gotoxy(40,13);
-    printf("I D  T R A N S A K S I     :");
-    gotoxy(70,13);
-    generateid("TRSBO",dtbo.id_transaksi);
-
     gotoxy(40, 15);
     printf("T G L  P E M B E L I A N   :");
     gotoprinttext(69, 15, "  /  /     \n");
@@ -196,6 +184,20 @@ void TambahDetailPembelianObat(){
             clearArea(75, 15, 4, 1);
         }
     }while(trsbo.tgl_pembelian.tahun < 2024  || trsbo.tgl_pembelian.tahun > 2028);
+        fclose(arspbeliobat);
+    TambahDetailPembelianObat();
+}
+
+void TambahDetailPembelianObat(){
+    FILE *Temp;
+    found = 0;
+    SetColorBlock(15,12);
+    dtbo.id_transaksi = trsbo.id_transaksi;
+    gotoxy(40,13);
+    printf("I D  T R A N S A K S I     :");
+    gotoxy(70,13);
+    generateid("TRSBO",dtbo.id_transaksi);
+
     gotoxy(40, 17);
     printf("T G L  P E N E R I M A A N :");
     gotoxy(40,19);
@@ -312,11 +314,19 @@ void alat() {
 }
 
 void pilihan() {
+    SetColorBlock(4,15);
+    gotoxy(121,12);
+    printf("PILIHAN  BARANG");
+    SetColorBlock(4,15);
+    gotoxy(121,13);
+    printf("1: Obat, 2:Alat");
+    SetColorBlock(15,12);
     gotoxy(73,21);	printf("   ");
     gotoxy(40,21);
     printf("P I L I H A N              :  ");
     gotoxy(69,21);
     scanf("%d", &trsbo.pilihan);
+    clearArea(120, 13, 25, 2);
     hideCursor();
 }
 
@@ -476,8 +486,10 @@ void tambah(){
         SpecialKeyYesorNoDashboard(145, 21,10,15,12,&output);
         switch(output){
             case 1 :
+                clearArea(69,21, 5, 1);
                 clearTableTransaksi();
                 clearTransaksi();
+
             TambahDetailPembelianObat();
                 break;
             case 2 :

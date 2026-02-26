@@ -8,6 +8,12 @@ void updateAlat() {
     gotoxy(154, 24);
     getnum(&id, 3);  // Ambil input ID kelas
     hideCursor();
+    if(id == 0){
+        BlankDashboard();
+        clearArea(5,24,28,4);
+        profileOwner();
+        menuOpsiDashboardOwner();
+    }
     SpecialKeyUpdate(152, 26, 13, 3, &output);  // Ambil input pilihan menu update
     switch (output) {
         case 1:  // Mengupdate data kelas berdasarkan ID
@@ -47,7 +53,7 @@ void updateAlat() {
                         showCursor();
                         gotoxy(132, 24);
                         SetColorBlock(15,12);
-                        printf("Masukan No. Telepon:");
+                        printf("Masukan Nama Baru:");
                         gotoxy(154, 24);
                         getinput(alt.nama_Alat, 25, 2);
                         hideCursor();

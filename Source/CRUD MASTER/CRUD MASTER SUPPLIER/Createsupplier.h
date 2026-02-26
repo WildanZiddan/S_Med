@@ -27,27 +27,19 @@ void createDataSupplier(){
     gotoxy(40, 19);
     printf("N A M A  S U P P L I E R      : ");
     gotoxy(79, 19);
-    fgets(sp.nama_Supplier, sizeof(sp.nama_Supplier), stdin);
-    sp.nama_Supplier[strcspn(sp.nama_Supplier, "\n")] = 0; // Hapus newline
+    getinput(sp.nama_Supplier, 50, 2);
 
     fflush(stdin);
     showCursor();
     gotoxy(40, 21);
     printf("C O M P A N Y                 :  ");
     gotoxy(79, 21);
-    fgets(sp.company, sizeof(sp.company), stdin);
-    sp.company[strcspn(sp.company, "\n")] = 0; // Hapus newline
+    getinput(sp.company, 50, 2);
 
     gotoxy(40, 23);
     printf("A L A M A T                   : ");
     gotoxy(79, 23);
-    fgets(sp.alamat, sizeof(sp.alamat), stdin);
-    sp.alamat[strcspn(sp.alamat, "\n")] = 0; // Hapus newline
-
-    gotoxy(40, 25);
-    printf("S T A T U S  : ");
-    gotoxy(79, 25);
-    scanf("%d", &sp.status);
+    getinput(sp.alamat, 50, 2);
     
     hideCursor();
     // Tulis data baru ke file

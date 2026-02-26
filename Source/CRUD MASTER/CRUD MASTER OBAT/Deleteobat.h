@@ -1,4 +1,5 @@
-void deleteStaffOwner(){
+void menuDeleteDataModifikasiObat();
+void deleteObat(){
     SetColorBlock(15,12);
     gotoxy(136,38);
     printf("Ketik 0 untuk batal delete");
@@ -6,7 +7,7 @@ void deleteStaffOwner(){
     showCursor();
     printf("D E L E T E  D A T A");
     gotoxy(132,24);
-    printf("Masukkan ID STAFF: STF");
+    printf("Masukkan ID Obat: OBT");
     gotoxy(154,24);
     getnum(&id,3);
     hideCursor();
@@ -17,74 +18,67 @@ void deleteStaffOwner(){
     SpecialKeyUpdate(152,26,13,3,&output);
     switch (output) {
         case 1:
-            arspstaff = fopen("../Source/../Database/Dat/staff.dat", "rb");
+            arspobat = fopen("../Source/../Database/Dat/obat.dat", "rb");
             ft = fopen("../Source/../Database/Dat/temp.dat", "wb");
             found = 0;
-            while (found == 0 && fread(&k, sizeof(k), 1, arspstaff) == 1) {
-                if (k.idStaff == id) {
+            while (found == 0 && fread(&obt, sizeof(obt), 1, arspobat) == 1) {
+                if (obt.id_Obat == id) {
                     found = 1;
                 }else {
-                    fwrite(&k, sizeof(k), 1, ft);
+                    fwrite(&obt, sizeof(obt), 1, ft);
                     found = 0;
                 }
             }
-            if(found == 1){
+            if(found==1){
                 clearKanan();
-                MessageBox(NULL,"ID Staff ditemukan!","Delete Berhasil!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
+                MessageBox(NULL,"ID Obat ditemukan!","Delete Berhasil!",MB_OK|MB_ICONINFORMATION|MB_DEFAULT_DESKTOP_ONLY);
                 clearTengah();
                 DashboardDetail(55,102,10,31,103,56,32,11);
-                seluruhDataOwner();
-                gotoxy(72,14);
-                generateid("STF",k.idStaff);
-                gotoxy(72,16);printf("%s",k.FName);
-                gotoxy(72,18);printf("%s",k.No_telp);
-                gotoxy(72,20);printf("%d/%d/%d",k.tanggalLahir.hari,k.tanggalLahir.bulan,k.tanggalLahir.tahun);
-                gotoxy(72,22);printf("%s",k.username);
-                gotoxy(72,24);printf("%s",k.password);
-                gotoxy(72,26);printf("%s",k.role);
+                seluruhDataObat();
+                gotoxy(72,16);
+                generateid("OBT",obt.id_Obat);
+                gotoxy(72,18);printf("%s",obt.nama_Obat);
+                gotoxy(72,20);rupiah(obt.harga_Obat,inputrp);printf("%s",inputrp);
+                gotoxy(72,22);printf("%d",obt.jumlahObat);
                 SetColorBlock(4,15);
                 gotoxy(65,36);printf("Detail Data yang anda hapus");
                 gotoxy(62,37);printf("Klik apa saja untuk melanjutkan...");
                 getch();
                 cancel = MessageBox(NULL,"Anda yakin ingin menghapus?","DELETE DATA",MB_OKCANCEL | MB_ICONQUESTION | MB_DEFAULT_DESKTOP_ONLY);
                 if(cancel == IDOK) {
-                    while (fread(&k, sizeof(k), 1, arspstaff) == 1) {
-                        fwrite(&k, sizeof(k), 1, ft);
+                    while (fread(&obt, sizeof(obt), 1, arspobat) == 1) {
+                        fwrite(&obt, sizeof(obt), 1, ft);
                     }
-                    fclose(arspstaff);
+                    fclose(arspobat);
                     fclose(ft);
-                    remove("../Source/../Database/Dat/staff.dat");
-                    rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/staff.dat");
+                    remove("../Source/../Database/Dat/obat.dat");
+                    rename("../Source/../Database/Dat/temp.dat", "../Source/../Database/Dat/obat.dat");
                 }else if(cancel == IDCANCEL){
-                    fclose(arspstaff);
+                    fclose(arspobat);
                     fclose(ft);
                     remove("../Source/../Database/Dat/temp.dat");
                     BlankDashboard();
-                    clearArea(5,14,28,4);
-                    profileOwner();
-                    menuOpsiDashboardOwner();
+                    menuDeleteDataModifikasiObat();
                 }
             }else{
-                MessageBox(NULL,"ID Staff Tidak ditemukan!","Delete Gagal!",MB_OK|MB_ICONERROR|MB_DEFAULT_DESKTOP_ONLY);
-                fclose(arspstaff);
+                MessageBox(NULL,"ID Obat Tidak ditemukan!","Delete Gagal!",MB_OK|MB_ICONERROR|MB_DEFAULT_DESKTOP_ONLY);
+                fclose(arspobat);
                 fclose(ft);
-                clearKanan();
-                deleteStaffOwner();
+                BlankDashboard();
+                menuDeleteDataModifikasiObat();
             }
             break;
         case 2:
             BlankDashboard();
-        clearArea(5,14,28,4);
-        profileOwner();
-        menuOpsiDashboardOwner();
+            menuOpsiDashboardOwner();
             break;
     }
 }
 
-void menuDeleteDataModifikasiOwner(){
+void menuDeleteDataModifikasiObat(){
     char exit[2] = "y";
     SetColorBlock(4,15);
-    //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/dataStaff.txt");
+    //DrawFile(48,9,"../Source/../Desaintxt/Dashboard/dataObat.txt");
     //DrawFile(130,22,"../Desaintxt/elemen/dataBook.txt");
     SetColorBlock(12,12);
     frameLayout(60,18,120,38,32);
@@ -96,14 +90,14 @@ void menuDeleteDataModifikasiOwner(){
     SetColorBlock(15,12);
     BlankDashboard();
     SetColorBlock(4,12);
-    tampilanCRUDStaff();
+    tampilanCRUDObat();
     DashboardCRUD();
-    readUpdateDataOwner();
+    readUpdateDataObat();
     do {
-        deleteStaffOwner();
+        deleteObat();
         clearTengah();
-        tampilanCRUDStaff();
-        readUpdateDataOwner();
+        tampilanCRUDObat();
+        readUpdateDataObat();
         clearKanan();
         SetColorBlock(15,12);
         gotoxy(135,23);printf("Anda Ingin Menghapus data lagi ?");
@@ -115,8 +109,8 @@ void menuDeleteDataModifikasiOwner(){
     gotoprinttext(116,40,"K E M B A L I");
     if(getch()){
         BlankDashboard();
-        clearArea(5,14,28,4);
-        profileOwner();
+        clearArea(5,19,28,4);
         menuOpsiDashboardOwner();
     }
 }
+

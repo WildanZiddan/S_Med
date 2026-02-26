@@ -90,7 +90,8 @@ void readAkunDataOwner(){
     gotoprinttext(150,40,"K E M B A L I");
     if(getch()){
         BlankDashboard();
-        clearArea(5,19,28,4);
+        clearArea(5,14,28,4);
+        profileOwner();
         menuOpsiDashboardOwner();
     }
 }
@@ -153,8 +154,10 @@ void menuReadDataModifikasiOwner(){
             SetColorBlock(15,12);
             gotoprinttext(150,40,"K E M B A L I");
             getch();
-                BlankDashboard();
-                menuReadDataModifikasiOwner();
+        BlankDashboard();
+        clearArea(5,14,28,4);
+        profileOwner();
+        menuOpsiDashboardOwner();
             break;
         case 4:
             BlankDashboard();

@@ -29,6 +29,21 @@ void DashboardOwner(){
     menuOpsiDashboardOwner();
 }
 
+void DashboardKasir(){
+    blankScreen();
+    Dashboard();
+    gotoprinttext(10,4,"M E N U  K A S I R");
+    gotoprinttext(14,6,"S - M E D");
+    // DrawFile(40,3,"../Desaintxt/Dashboard/ManajerD.txt");
+    // DrawFile(160,3,"../Desaintxt/Dashboard/user.txt");
+    clearArea(140,4,15,1);
+    Tanggal();
+    /*Navbar Menu*/
+    menuDashboardKasir();
+    profileOwner();
+    menuOpsiDashboardOwner();
+}
+
 // void DashboardAdmin(){
 //     blankScreen();
 //     Dashboard();

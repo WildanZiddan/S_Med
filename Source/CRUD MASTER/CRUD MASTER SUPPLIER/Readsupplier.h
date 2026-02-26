@@ -120,7 +120,7 @@ void readUpdateDataSupplier() {
             printf("%s\n", sp.nama_Supplier);
             gotoxy(90, y);
             printf("%s\n",   sp.company);
-            gotoxy(120, y);
+            gotoxy(110, y);
             printf("%s", sp.alamat);
         } else {
             SetColorBlock(15, 12);
@@ -137,7 +137,7 @@ void readUpdateDataSupplier() {
             printf("%s\n", sp.nama_Supplier);
             gotoxy(90, y);
             printf("%s\n",   sp.company);
-            gotoxy(120, y);
+            gotoxy(110, y);
             printf("%s", sp.alamat);
         }
         i++;

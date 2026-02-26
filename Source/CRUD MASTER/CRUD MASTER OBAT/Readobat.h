@@ -31,7 +31,7 @@ void readDataObat() {
             gotoxy(38, y);
             printf("%d", i);
             gotoxy(50, y);
-            generateid("ALT",obt.id_Obat);
+            generateid("OBT",obt.id_Obat);
             gotoxy(67, y);
             printf("%s\n", obt.nama_Obat);
             gotoxy(77, y);
@@ -53,7 +53,7 @@ void readDataObat() {
             gotoxy(38, y);
             printf("%d", i);
             gotoxy(50, y);
-            generateid("ALT",obt.id_Obat);
+            generateid("OBT",obt.id_Obat);
             gotoxy(67, y);
             printf("%s\n", obt.nama_Obat);
             gotoxy(77, y);
@@ -127,8 +127,8 @@ void readUpdateDataObat() {
             gotoxy(38, y);
             printf("%d", i);
             gotoxy(50, y);
-            generateid("ALT",obt.id_Obat);
-            gotoxy(67, y);
+            generateid("OBT",obt.id_Obat);
+            gotoxy(60, y);
             printf("%s\n", obt.nama_Obat);
             gotoxy(77, y);
             printf("%s\n", obt.nama_Jenis);
@@ -149,8 +149,8 @@ void readUpdateDataObat() {
             gotoxy(38, y);
             printf("%d", i);
             gotoxy(50, y);
-            generateid("ALT",obt.id_Obat);
-            gotoxy(67, y);
+            generateid("OBT",obt.id_Obat);
+            gotoxy(60, y);
             printf("%s\n", obt.nama_Obat);
             gotoxy(77, y);
             printf("%s\n", obt.nama_Jenis);

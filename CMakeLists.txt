@@ -31,5 +31,11 @@ add_executable(S_Med main.c
         "Source/TRANSAKSI APOTEK/TRANSAKSI PENERIMAAN/createTransaksiPenerimaan.h"
         "Source/LAPORAN APOTEK/laporanPembelian.h"
         "Source/TRANSAKSI APOTEK/TRANSAKSI PENERIMAAN/readTransaksiPenerimaan.h"
+        "Source/CRUD MASTER/CRUD MASTER OBAT/Deleteobat.h"
+        "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Deletejenis.h"
+        "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Deletesupplier.h"
+        "Source/CRUD MASTER/CRUD MASTER SUPPLIER/Updatesupplier.h"
+        "Source/CRUD MASTER/CRUD MASTER OBAT/Updateobat.h"
+        "Source/CRUD MASTER/CRUD MASTER JENIS OBAT/Updatejenis.h"
 )
 target_link_libraries(S_Med winmm)

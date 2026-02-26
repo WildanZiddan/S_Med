@@ -1,3 +1,4 @@
+
 void menuReadDataModifikasiOwner();
 void menuCreateDataModifikasiOwner();
 void menuUpdateDataModifikasiOwner();
@@ -5,6 +6,8 @@ void menuDeleteDataModifikasiOwner();
 
 void createDataSupplier();
 void readDataSupplier();
+void menuUpdateDataModifikasiSupplier();
+void menuDeleteDataModifikasiSupplier();
 
 void readAkunDataOwner();
 void readAllDataOwner();
@@ -16,9 +19,13 @@ void menuDeleteDataModifikasiAlat();
 
 void createDataJenisObat();
 void readDataJenis();
+void menuUpdateDataModifikasiJenis();
+void menuDeleteDataModifikasiJenisObat();
 
 void createDataObat();
 void readDataObat();
+void menuUpdateDataModifikasiObat();
+void menuDeleteDataModifikasiObat();
 
 void SpecialkeyloginMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
 void SpecialkeyDashboardMenuDataOwner(int x, int y, int lebar,int tinggi, int *output);
@@ -33,17 +40,20 @@ void dataPenjualan();
 void dataAlat();
 void dataObat();
 void dataSupplier();
+void lihatTransaksiPenerimaan();
 
 void menuOpsiDashboardOwner();
 
 void createTransaksiObat();
 void TambahTPembelianObat();
 void TambahDetailPembelianObat();
-
-void readAllDataTransaksiPembelian();
 void lihatDetailTransaksiPembelianOwner();
 
+void readAllDataTransaksiPembelian();
+void readAllDataTransaksiPenerimaan();
+
 void createTransaksiPenerimaan();
+void tampilanTableTransaksiPenerimaan();
 
 void profileOwner(){
     arspstaff = fopen("../Source/../Database/Dat/staff.dat","rb");
@@ -152,11 +162,11 @@ void dataSupplierMenu(){
         break;
         case 3 :
             BlankDashboard();
-            //menuUpdateDataModifikasiOwner();
+            menuUpdateDataModifikasiSupplier();
         break;
         case 4 :
             BlankDashboard();
-            //menuDeleteDataModifikasiOwner();
+            menuDeleteDataModifikasiSupplier();
         break;
         case 5 :
             BlankDashboard();
@@ -230,11 +240,11 @@ void dataObatMenu(){
         break;
         case 3 :
             BlankDashboard();
-            menuUpdateDataModifikasiAlat();
+            menuUpdateDataModifikasiObat();
         break;
         case 4 :
             BlankDashboard();
-            menuDeleteDataModifikasiAlat();
+            menuDeleteDataModifikasiObat();
         break;
         case 5 :
             BlankDashboard();
@@ -264,6 +274,25 @@ void dataJenis() {
     readDataJenis();
 }
 
+void lihatTransaksiPenerimaan() {
+    SetColorBlock(4,15);
+    //    DrawFile(52,9,"../Source/../Desaintxt/Dashboard/lihatData.txt");
+    //DrawFile(130,22,"../Desaintxt/Elemen/dataBook.txt");
+    SetColorBlock(12,12);
+    frameLayout(60,18,120,38,32);
+    SetColorBlock(15,4);
+    frameLayout(60,18,120,19,220);
+    frameLayout(60,18,61,38,220);
+    frameLayout(119,18,120,38,220);
+    frameLayout(60,37,120,38,223);
+    SetColorBlock(15,12);
+    BlankDashboard();
+    SetColorBlock(4,15);
+    BlankDashboard();
+    tampilanTableTransaksiPenerimaan();
+    readAllDataTransaksiPenerimaan();
+}
+
 void dataJenisObatMenu(){
     SetColorBlock(4,15);
     //    DrawFile(48,9,"../Desaintxt/Dashboard/dataKaryawan.txt");
@@ -288,11 +317,11 @@ void dataJenisObatMenu(){
         break;
         case 3 :
             BlankDashboard();
-            //menuUpdateDataModifikasiAlat();
+            menuUpdateDataModifikasiJenis();
         break;
         case 4 :
             BlankDashboard();
-            //menuDeleteDataModifikasiAlat();
+            menuDeleteDataModifikasiJenisObat();
         break;
         case 5 :
             BlankDashboard();
@@ -500,18 +529,7 @@ void dataTransaksiPenerimaanMenu(){
     switch (output) {
         case 1 :
             BlankDashboard();
-        readAllDataTransaksiPembelian();
-        SpecialKeyCariorBackDashboard(150, 40,10,12,15,&output);
-        switch (output) {
-            case 1 :
-                SetColorBlock(4,15);
-            lihatDetailTransaksiPembelianOwner();
-            break;
-            case 2:
-                BlankDashboard();
-            dataTransaksiPembelianMenu();
-            break;
-        }
+        lihatTransaksiPenerimaan();
         break;
         case 2 :
             BlankDashboard();
@@ -577,7 +595,7 @@ void dataLaporanMenu(){
         break;
         case 2 :
             BlankDashboard();
-        //dataAlatMenu();
+        dataTransaksiPenerimaanMenu();
         break;
         case 3 :
             BlankDashboard();

@@ -76,6 +76,12 @@ void createData(int output){
         dataStaffMenu();
     }
     fflush(stdin);
+    SetColorBlock(4,15);
+    gotoxy(135,12);
+    printf("PILIHAN  ROLE");
+    SetColorBlock(4,15);
+    gotoxy(121,13);
+    printf("Hanya 'Owner' dan 'Kasir' yang dapat login");
     showCursor();
     gotoxy(40, 25);
     printf("R O L E                   :");
@@ -85,7 +91,7 @@ void createData(int output){
     cancelCharOwner(tempk.role);
 
     inputUsernamedanPass();
-
+    clearArea(121,12,50,2);
     arspstaff = fopen("../Source/../Database/Dat/staff.dat", "ab+");
 
     k.idStaff = tempk.idStaff;
